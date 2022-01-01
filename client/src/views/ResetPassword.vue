@@ -22,8 +22,8 @@
             <form v-on:submit.prevent="validateToken">
                 <div class="form-group">
                     <div class="mb-3">
-                    <label class="form-label">Token</label>
-                    <input type="text" class="form-control" v-model="token" :class="{ 'is-invalid' : errorToken, 'is-valid' : infoToken }" placeholder="Token...">
+                    <label class="form-label">Kod autoryzacyjny</label>
+                    <input type="text" class="form-control" v-model="token" :class="{ 'is-invalid' : errorToken, 'is-valid' : infoToken }" placeholder="Kod autoryzacyjny...">
                     <div class="invalid-feedback"> {{errorToken}} </div>
                     <div class="valid-feedback"> {{infoToken}} </div>
                     </div>
