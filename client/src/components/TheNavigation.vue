@@ -32,7 +32,7 @@
 
         <div class="btn-group">
           <div v-if="authenticated">
-          <button type="button" class="btn btn-secondary" >{{user.name}}</button>
+          <router-link class="btn btn-secondary" to="/profile">{{user.name}}</router-link>
           <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
