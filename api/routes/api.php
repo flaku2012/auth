@@ -41,3 +41,4 @@ Route::get('/reset-password-email/{email}' , function($email){
 Route::post('/send_token_email', [ResetPasswordController::class, 'send_token_email'] );
 Route::post('/validate_token', [ResetPasswordController::class, 'validate_token'] );
 Route::post('/reset_password', [ResetPasswordController::class, 'reset_password'] );
+Route::post('/change_password' , [ResetPasswordController::class, 'change_password'] );

@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+
+use App\Rules\WerifyPasswordOnDatabaseRule;
 
 class ResetPasswordController extends Controller
 {
@@ -62,6 +66,40 @@ class ResetPasswordController extends Controller
        $user->save();
 
     }
+
+//====================================================================================================
+//====================================================================================================
+
+public function change_password(Request $request)
+{
+    //$user = User::find($request->user_id);
+    $user = User::where('id', $request->user_id)->first();
+
+    $stare_haslo = $request->stare_haslo;
+    $nowe_haslo = $request->nowe_haslo;
+    $powtorz_nowe_haslo = $request->powtorz_nowe_haslo;
+
+    $walidator = Validator::make($request->all(), [
+        'stare_haslo' => ['required', 'max:50', 'min:5', new WerifyPasswordOnDatabaseRule($stare_haslo, $user->password)],
+        'nowe_haslo' => 'required|min:6',
+        'powtorz_nowe_haslo' => 'required|min:6|same:nowe_haslo',
+    ], 
+    [
+        'min' => 'To pole musi mieć conajmniej :min znaków.',
+        'max' => 'To pole musi mieć maksymalnie :max znaków.',
+        'required' => 'To pole jest wymagane.',
+        'same' => 'Hasła niezgadzają się',
+    ]);
+
+    if ($walidator->fails()) {
+        return response()->json(['errors' => $walidator->errors()], 401);
+    }
+
+    $update_user = User::find($user->id);
+    $update_user->password = bcrypt($powtorz_nowe_haslo);
+    $update_user->save();
+
+}
 
 //====================================================================================================
 //====================================================================================================

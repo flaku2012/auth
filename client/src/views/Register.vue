@@ -41,10 +41,7 @@
             </form>
         </div>
     </div>
-    <div class="col-3">
-        TESTY: <br>
-        {{errors}}
-    </div>
+    <div class="col-3"></div>
 </div>
 
 </template>

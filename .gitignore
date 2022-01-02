@@ -30,4 +30,4 @@
 *.exe
 *.out
 
-client/node_modules/.cache/babel-loader/961010394e946fda6ad6ad5dede7a7d8.json
+client/node_modules/.cache
