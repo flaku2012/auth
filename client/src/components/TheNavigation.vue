@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
-            <router-link to='/' class="nav-link">Home</router-link>
+            <router-link to='/miasto' class="nav-link">Miasto</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -37,8 +37,9 @@
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <router-link class="dropdown-item" to="/wiadomosci">Wiadomości</router-link>
+            <router-link class="dropdown-item" to="/premium">Premium</router-link>
+            <router-link class="dropdown-item" to="/premium">Znajomi</router-link>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" @click="signOut">Wyloguj się</a></li>
           </ul>
@@ -52,31 +53,6 @@
       </div>
     </div>
   </nav>
-
-    <!-- <ul>
-        <li>
-            <router-link to='/'>Home</router-link>
-            <br>
-            <button class="btn btn-primary">TEST</button>
-        </li>
-        <template v-if="authenticated">
-        <li>
-            {{user.name}} || {{user.email}}
-        </li>
-        <li>
-            <router-link to='dashboard'>Dashboard</router-link>
-        </li>
-        <li>
-            <a href="#" @click="signOut">Sign OUT</a>
-        </li>
-        </template>
-        <template v-else>
-        <li>
-            <router-link to='signin'>Sign IN</router-link>
-        </li>
-        </template>
-    </ul> -->
-
     
 </template>
 

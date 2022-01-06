@@ -30,21 +30,21 @@
                         <div class="mb-3 row">
                             <label for="user_stare_haslo" class="col-sm-4 col-form-label">Stare hasło</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control"  id="user_stare_haslo" v-model="form.stare_haslo">
+                                <input type="password" class="form-control"  id="user_stare_haslo" v-model="form.stare_haslo">
                                 <div class="form-text text-danger" v-if="errors.stare_haslo">{{errors.stare_haslo[0]}}</div>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="user_nowe_haslo" class="col-sm-4 col-form-label">Nowe hasło</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="user_nowe_haslo" v-model="form.nowe_haslo">
+                                <input type="password" class="form-control" id="user_nowe_haslo" v-model="form.nowe_haslo">
                                 <div class="form-text text-danger" v-if="errors.nowe_haslo">{{errors.nowe_haslo[0]}}</div>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="user_powtorz_nowe_haslo" class="col-sm-4 col-form-label">Powórz nowe hasło</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="user_powtorz_nowe_haslo" v-model="form.powtorz_nowe_haslo">
+                                <input type="password" class="form-control" id="user_powtorz_nowe_haslo" v-model="form.powtorz_nowe_haslo">
                                 <div class="form-text text-danger" v-if="errors.powtorz_nowe_haslo">{{errors.powtorz_nowe_haslo[0]}}</div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ export default {
     computed:{
         ...mapGetters({
             user: 'auth/user',
-        })
+        }),
     },
 
     data(){
@@ -110,6 +110,7 @@ export default {
                 this.form.powtorz_nowe_haslo = ''
                 this.errors = []
                 this.stan_widoku_formularza = false
+                this.$notify({ text: "Hasło zmienione.", position: "top right", type: "success" })
             })
             .catch( (error) => {
                 // handle error

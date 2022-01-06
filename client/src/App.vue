@@ -5,10 +5,11 @@
       <div id="app">
         <TheNavigation/>
         <br>
-        <router-view/>
+        <router-view/>     
       </div>
     </div>
   </div>
+  <notifications />
 </div>
 
   
