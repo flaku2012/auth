@@ -3,7 +3,14 @@ import Home from '../views/Home.vue'
 import SignIn from '../views/SignIn.vue'
 import Register from '../views/Register.vue'
 import ResetPassword from '../views/ResetPassword.vue'
-import Profile from '../views/Profile.vue'
+import Profile from '../views/profil/Profile.vue'
+import Profile_Profil from '../views/profil/Profil.vue'
+import Profile_Premium from '../views/profil/Premium.vue'
+import Profile_Przyjaciele from '../views/profil/Przyjaciele.vue'
+import Profile_Wiadomosci from '../views/profil/Wiadomosci.vue'
+import Profile_Zadania from '../views/profil/Zadania.vue'
+import Profile_Odznaczenia from '../views/profil/Odznaczenia.vue'
+import Profile_Inwentarz from '../views/profil/Inwentarz.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Miasto from '../views/miasto/Miasto.vue'
 import Wystawy from '../views/wystawy/Wystawy.vue'
@@ -65,6 +72,36 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
+    children: [
+      {
+        path: 'profil',
+        component: Profile_Profil
+      },
+      {
+        path: 'premium',
+        component: Profile_Premium
+      },
+      {
+        path: 'przyjaciele',
+        component: Profile_Przyjaciele
+      },
+      {
+        path: 'wiadomosci',
+        component: Profile_Wiadomosci
+      },
+      {
+        path: 'zadania',
+        component: Profile_Zadania
+      },
+      {
+        path: 'odznaczenia',
+        component: Profile_Odznaczenia
+      },
+      {
+        path: 'inwentarz',
+        component: Profile_Inwentarz
+      },
+    ],
     beforeEnter: (to, from, next) => {
       if(!store.getters['auth/authenticated']){
         return next({

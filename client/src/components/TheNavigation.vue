@@ -32,17 +32,20 @@
 
         <div class="btn-group">
           <div v-if="authenticated">
-          <router-link class="btn btn-secondary" to="/profile">{{user.name}}</router-link>
-          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <router-link class="dropdown-item" to="/wiadomosci">Wiadomości</router-link>
-            <router-link class="dropdown-item" to="/premium">Premium</router-link>
-            <router-link class="dropdown-item" to="/premium">Znajomi</router-link>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" @click="signOut">Wyloguj się</a></li>
-          </ul>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Profil</button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <router-link class="dropdown-item" to="/profile">{{user.name}}</router-link>
+                <router-link class="dropdown-item" to="/przyjaciele">Przyjaciele</router-link>
+                <router-link class="dropdown-item" to="/wiadomosci">Wiadomości</router-link>
+                <router-link class="dropdown-item" to="/premium">Premium</router-link>
+                <router-link class="dropdown-item" to="/premium">Odznaczenia</router-link>
+                <router-link class="dropdown-item" to="/premium">Inwentarz</router-link>
+                <router-link class="dropdown-item" to="/premium">Zadania</router-link>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" @click="signOut">Wyloguj się</a></li>
+              </ul>
+            </div>
           </div>
           <div v-else>
           <router-link to='signin' class="btn btn-success">Logowanie</router-link>
