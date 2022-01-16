@@ -21,17 +21,23 @@
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label">Zmiana nazwy sekcji:</label>
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="password" class="form-control" id="inputPassword">
             <small id="passwordHelpBlock" class="form-text text-muted">
               Koszt: 100 zł.
             </small>
           </div>
+          <div class="col-sm-1">
+            <button class="btn btn-success">Zapisz</button>
+          </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label">Opis sekcji:</label>
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <textarea type="password" class="form-control" id="inputPassword" placeholder="Tu wpisz opis swojej sekcji." rows="4"></textarea>
+          </div>
+          <div class="col-sm-1">
+            <button class="btn btn-success">Zapisz</button>
           </div>
         </div>
         <div class="form-group row">
@@ -55,7 +61,7 @@
       <hr>
       <h4 class="text-center">Członkowie</h4>
       <div class="table-responsive text-center">
-            <table class="table table-hover table-bordered table-sm border-primary">
+            <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th scope="col">Lp.</th>
@@ -68,14 +74,14 @@
                 <tr>
                     <td>1</td>
                     <td>flaku2012</td>
-                    <td width="10%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center"><i class="bi bi-person-circle"></i></router-link></td>
-                    <td width="15%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center"><i class="bi bi-trash"></i></router-link></td>
+                    <td width="10%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center">Profil</router-link></td>
+                    <td width="15%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center">Usuń</router-link></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>padlina2012</td>
-                    <td width="10%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center"><i class="bi bi-person-circle"></i></router-link></td>
-                    <td width="15%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center"><i class="bi bi-trash"></i></router-link></td>
+                    <td width="10%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center">Profil</router-link></td>
+                    <td width="15%"><router-link to="/sekcja/zarzadzanie_sekcja" class="text-center">Usuń</router-link></td>
                 </tr>
                 </tbody>
 

@@ -1,7 +1,44 @@
 <template>
     <div>
         <h3 class="text-center">Premium</h3>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus nulla dolor quos sint neque tempore tempora in ducimus? Voluptatem, maiores dolor! Sit laboriosam accusamus soluta itaque quod numquam repellendus ipsam doloribus, libero et impedit cum inventore suscipit perferendis debitis ratione eaque fugit molestiae consequatur similique nam. Ratione atque debitis suscipit quis eaque repellat incidunt dolorem corporis facilis voluptatibus animi quidem magni, aliquid, iure laboriosam repellendus hic porro voluptate excepturi quia ut deserunt dolore ea nostrum! Amet quo optio quaerat inventore modi? Velit quae aliquam reiciendis suscipit. Amet illo recusandae et? Saepe eius, consectetur cum fugiat odit incidunt aut minus! Eveniet neque delectus laudantium libero dolore laborum? Nobis a maiores nulla, aperiam animi asperiores eius aut modi ex expedita. Error dolor provident nesciunt eius explicabo. Amet nesciunt exercitationem, nisi possimus voluptatem vitae officia fugit delectus minima hic neque autem veniam molestias nostrum iure, cupiditate numquam doloremque laboriosam culpa sed laborum. Maiores, alias dolore! Nisi aspernatur vero labore fugit alias fuga ex veniam ratione quas aliquid quidem reiciendis, fugiat blanditiis soluta dolorem voluptate distinctio quod architecto corrupti quae repellendus omnis repudiandae quia. Perspiciatis dignissimos, soluta quos dicta ullam, in harum earum totam id nisi assumenda quia blanditiis iure quas? Voluptates sed magni quidem, laborum sit nobis doloremque sapiente nostrum magnam labore odit in similique facilis dolorem totam vel dolorum excepturi error ipsum quo voluptatum ad consectetur delectus? Molestiae a sed distinctio eius debitis nostrum minus nulla doloribus deserunt voluptatum! Nemo earum, maxime rerum quam dolor placeat magnam sed unde asperiores architecto sapiente enim vel harum. Exercitationem deserunt veniam alias ex ducimus, molestias atque dolore recusandae, omnis dolorem officiis deleniti reprehenderit corrupti quasi? Consequuntur rerum, dicta mollitia at ea, sit hic recusandae aliquam delectus dolorem eius laborum. Corporis exercitationem at quis quia facilis atque inventore harum veritatis nemo voluptatibus rerum adipisci omnis deserunt odio placeat aliquam fugit, autem voluptatem laborum accusantium consequatur in quos? Corrupti distinctio itaque tempora accusantium vel commodi hic, nobis tempore expedita accusamus numquam similique suscipit dicta velit doloremque cupiditate voluptates eum? Sapiente, qui quaerat voluptatum blanditiis animi at dolor impedit accusamus repellendus quibusdam porro temporibus obcaecati corrupti vel voluptate minima esse ipsam mollitia exercitationem magnam voluptas sunt. Amet minima consectetur ratione quisquam qui quasi recusandae voluptates illum porro cum, voluptas exercitationem atque delectus ad fugit doloribus facilis eos, natus repellendus explicabo laborum. Rem, veniam. Corrupti necessitatibus sunt minus accusantium molestias voluptatem eius animi. Iure reprehenderit veritatis, amet error quas aspernatur a repudiandae velit exercitationem, delectus optio eveniet, blanditiis quasi. Aliquam, earum asperiores! Numquam praesentium sed porro distinctio similique quas minus eveniet voluptatum voluptates? Voluptatum nemo vitae ut expedita officia sint, eos beatae quaerat quisquam delectus illo nulla nihil illum velit dolore! Tenetur sequi ab assumenda laborum pariatur eius dolores, consequuntur nostrum ut aperiam velit, omnis, voluptatibus quae quo corporis provident dignissimos dolorum inventore animi ipsum hic impedit unde! Accusantium, ut, esse cumque odit cum aliquam consectetur molestiae impedit, quas nesciunt tempora minus illo laudantium dolor soluta distinctio laboriosam alias illum aspernatur architecto quasi fuga explicabo repudiandae. Dolore, illo ipsum?
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <router-link to="kup_punkty_premium" class="btn btn-success btn-sm">Kup punkty premium</router-link>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                Udogodnienia z premium
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>are unaffected by this style</li>
+                    <li>will still show a bullet</li>
+                    <li>and have appropriate left margin</li>
+                </ul>
+                <h5>Posiadasz: 240 pkt</h5> 
+
+                <hr>
+                <h5>Wybierz opcję dla siebie:</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option selected value="30">30 dni</option>
+                            <option value="1">14 dni</option>
+                            <option value="2">7 dni</option>
+                            <option value="3">3 dni</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <b>Koszt: </b> 12 pkt.
+                    </div>      
+                </div>
+                <br>
+                <div class="text-center">
+                    <button class="btn btn-success">Przedłuż teraz</button>
+                </div>
+
+            </div>
+        </div>
         
     </div>
 </template>

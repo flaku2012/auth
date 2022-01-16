@@ -5,7 +5,7 @@
     <div>
 
         <div class="table-responsive text-center">
-            <table class="table table-hover table-bordered table-sm border-primary">
+            <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th scope="col">Nazwa sekcji</th>
@@ -19,13 +19,13 @@
                     <td>! Działdowo Loty !</td>
                     <td>9/10</td>
                     <td>100 zł</td>
-                    <td><router-link to="/sekcja/szczegoly_sekcji" class="text-center"><i class="bi bi-arrow-right-square-fill"></i></router-link></td>
+                    <td><router-link to="/sekcja/szczegoly_sekcji" class="text-center">Sprawdź</router-link></td>
                 </tr>
                 <tr>
                     <td>! PZHGP Wysoka !</td>
                     <td>8/15</td>
                     <td>brak wpisowego</td>
-                    <td><router-link to="/sekcja/szczegoly_sekcji" class="text-center"><i class="bi bi-arrow-right-square-fill"></i></router-link></td>
+                    <td><router-link to="/sekcja/szczegoly_sekcji" class="text-center">Sprawdź</router-link></td>
                 </tr>
                 </tbody>
 

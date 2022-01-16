@@ -11,7 +11,7 @@
                     Profil
                 </router-link>
                 <router-link to="/profile/przyjaciele" class="list-group-item list-group-item-action text-center" active-class="active">
-                    Przyjaciele
+                    <i class="fas fa-user"></i>Przyjaciele
                 </router-link>
                 <router-link to="/profile/wiadomosci" class="list-group-item list-group-item-action text-center" active-class="active">
                     Wiadomości

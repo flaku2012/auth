@@ -6,8 +6,12 @@ import ResetPassword from '../views/ResetPassword.vue'
 import Profile from '../views/profil/Profile.vue'
 import Profile_Profil from '../views/profil/Profil.vue'
 import Profile_Premium from '../views/profil/Premium.vue'
+import Profile_Kup_punkty_premium from '../views/profil/Kup_punkty_premium.vue'
 import Profile_Przyjaciele from '../views/profil/Przyjaciele.vue'
+import Profile_Nowy_przyjaciel from '../views/profil/Nowy_przyjaciel.vue'
 import Profile_Wiadomosci from '../views/profil/Wiadomosci.vue'
+import Profile_Nowa_wiadomosc from '../views/profil/Nowa_wiadomosc.vue'
+import Profile_Wiadomosc_grupowa from '../views/profil/Wiadomosc_grupowa.vue'
 import Profile_Zadania from '../views/profil/Zadania.vue'
 import Profile_Odznaczenia from '../views/profil/Odznaczenia.vue'
 import Profile_Inwentarz from '../views/profil/Inwentarz.vue'
@@ -44,6 +48,13 @@ import Zwiazek_Ostatnie_loty from '../views/zwiazek/Ostatnie_loty.vue'
 import Zwiazek_Ranking_golebi from '../views/zwiazek/Ranking_golebi.vue'
 import Zwiazek_Ranking_hodowcow from '../views/zwiazek/Ranking_hodowcow.vue'
 import Zwiazek_Zmiana_oddzialu from '../views/zwiazek/Zmiana_oddzialu.vue'
+import Golebnik from '../views/golebnik/Golebnik.vue'
+import Golab from '../views/golab/Golab.vue'
+import Golab_Informacje_podstawowe from '../views/golab/Informacje_podstawowe.vue'
+import Golab_Bazar from '../views/golab/Bazar.vue'
+import Golab_Loty from '../views/golab/Loty.vue'
+import Golab_Rodzice from '../views/golab/Rodzice.vue'
+import Golab_Zdrowie from '../views/golab/Zdrowie.vue'
 import NotFound from '../views/NotFound.vue'
 import store from '@/store'
 
@@ -82,12 +93,28 @@ const routes = [
         component: Profile_Premium
       },
       {
+        path: 'kup_punkty_premium',
+        component: Profile_Kup_punkty_premium
+      },
+      {
         path: 'przyjaciele',
         component: Profile_Przyjaciele
       },
       {
+        path: 'nowy_przyjaciel',
+        component: Profile_Nowy_przyjaciel
+      },
+      {
         path: 'wiadomosci',
         component: Profile_Wiadomosci
+      },
+      {
+        path: 'nowa_wiadomosc',
+        component: Profile_Nowa_wiadomosc
+      },
+      {
+        path: 'wiadomosc_grupowa',
+        component: Profile_Wiadomosc_grupowa
       },
       {
         path: 'zadania',
@@ -323,6 +350,54 @@ const routes = [
       {
         path: 'zmiana_oddzialu',
         component: Zwiazek_Zmiana_oddzialu
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      if(!store.getters['auth/authenticated']){
+        return next({
+          name: 'SignIn'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/golebnik/:id',
+    name: 'Golebnik',
+    component: Golebnik,
+    beforeEnter: (to, from, next) => {
+      if(!store.getters['auth/authenticated']){
+        return next({
+          name: 'SignIn'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/golab/:id',
+    name: 'Golab',
+    component: Golab,
+    children: [
+      {
+        path: 'informacje_podstawowe',
+        component: Golab_Informacje_podstawowe
+      },
+      {
+        path: 'wystaw_na_bazar',
+        component: Golab_Bazar
+      },
+      {
+        path: 'loty',
+        component: Golab_Loty
+      },
+      {
+        path: 'zdrowie',
+        component: Golab_Zdrowie
+      },
+      {
+        path: 'rodzice',
+        component: Golab_Rodzice
       },
     ],
     beforeEnter: (to, from, next) => {

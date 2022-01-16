@@ -5,7 +5,7 @@
     <div>
 
         <div class="table-responsive text-center">
-            <table class="table table-hover table-bordered table-sm border-primary">
+            <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th scope="col">Gołąb</th>
@@ -19,13 +19,13 @@
                     <td>Bocian [potencjał: 200 | samica | roczniak]</td>
                     <td>10</td>
                     <td>1h 20 min</td>
-                    <td><router-link to="/bazar/szczegoly_oferty" class="text-center"><i class="bi bi-arrow-right-square-fill"></i></router-link></td>
+                    <td><router-link to="/bazar/szczegoly_oferty" class="text-center">Sprawdź</router-link></td>
                 </tr>
                 <tr>
                     <td>Wyszwanc [potencjał: 125 | samiec | 2 lata]</td>
                     <td>25</td>
                     <td>0h 25 min</td>
-                    <td><router-link to="/bazar/szczegoly_oferty" class="text-center"><i class="bi bi-arrow-right-square-fill"></i></router-link></td>
+                    <td><router-link to="/bazar/szczegoly_oferty" class="text-center">Sprawdź</router-link></td>
                 </tr>
                 </tbody>
 

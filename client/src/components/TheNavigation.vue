@@ -31,17 +31,46 @@
         </ul>
 
         <div class="btn-group">
+          <a class="nav-link disabled">Praca: 06:52:20</a>
+          <a class="nav-link disabled">Saldo: 1000 zł</a>
+        </div>
+
+        <div class="btn-group">
           <div v-if="authenticated">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Profil</button>
+              <button class="btn btn-secondary dropdown-toggle position-relative" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Profil
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  3
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <router-link class="dropdown-item" to="/profile">{{user.name}}</router-link>
-                <router-link class="dropdown-item" to="/przyjaciele">Przyjaciele</router-link>
-                <router-link class="dropdown-item" to="/wiadomosci">Wiadomości</router-link>
-                <router-link class="dropdown-item" to="/premium">Premium</router-link>
-                <router-link class="dropdown-item" to="/premium">Odznaczenia</router-link>
-                <router-link class="dropdown-item" to="/premium">Inwentarz</router-link>
-                <router-link class="dropdown-item" to="/premium">Zadania</router-link>
+                <router-link class="dropdown-item" to="/profile/profil">{{user.name}}</router-link>
+                <router-link class="dropdown-item" to="/profile/przyjaciele">Przyjaciele</router-link>
+                <router-link class="dropdown-item position-relative" to="/profile/wiadomosci">
+                  Wiadomości
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    1
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                </router-link>
+                <router-link class="dropdown-item" to="/profile/premium">Premium</router-link>
+                <router-link class="dropdown-item" to="/profile/odznaczenia">Odznaczenia</router-link>
+                <router-link class="dropdown-item position-relative" to="/profile/inwentarz">
+                  Inwentarz
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    1
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                </router-link>
+                <router-link class="dropdown-item position-relative" to="/profile/zadania">
+                  Zadania
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    1
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                </router-link>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#" @click="signOut">Wyloguj się</a></li>
               </ul>
