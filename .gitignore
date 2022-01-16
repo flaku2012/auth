@@ -30,6 +30,5 @@
 *.exe
 *.out
 
-client/node_modules/.cache/*
-client/node_modules/.bin/cross-env
-client/node_modules/.bin/cross-env-shell
+client/node_modules/.cache/**
+
