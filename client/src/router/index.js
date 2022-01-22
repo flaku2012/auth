@@ -55,6 +55,11 @@ import Golab_Bazar from '../views/golab/Bazar.vue'
 import Golab_Loty from '../views/golab/Loty.vue'
 import Golab_Rodzice from '../views/golab/Rodzice.vue'
 import Golab_Zdrowie from '../views/golab/Zdrowie.vue'
+import Trening from '../views/trening/Trening.vue'
+import TreningInformacje_podstawowe from '../views/trening/Informacje_podstawowe.vue'
+import TreningSamochod from '../views/trening/Samochod.vue'
+import Gabinet_Weterynaryjny from '../views/gabinet_weterynaryjny/Gabinet_weterynaryjny.vue'
+import Gabinet_Weterynaryjny_Informacje_podstawowe from '../views/gabinet_weterynaryjny/Informacje_podstawowe.vue'
 import NotFound from '../views/NotFound.vue'
 import store from '@/store'
 
@@ -398,6 +403,48 @@ const routes = [
       {
         path: 'rodzice',
         component: Golab_Rodzice
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      if(!store.getters['auth/authenticated']){
+        return next({
+          name: 'SignIn'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/trening',
+    name: 'Trening',
+    component: Trening,
+    children: [
+      {
+        path: 'informacje_podstawowe',
+        component: TreningInformacje_podstawowe
+      },
+      {
+        path: 'samochod',
+        component: TreningSamochod
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      if(!store.getters['auth/authenticated']){
+        return next({
+          name: 'SignIn'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/gabinet_weterynaryjny',
+    name: 'GabinetWeterynaryjny',
+    component: Gabinet_Weterynaryjny,
+    children: [
+      {
+        path: 'informacje_podstawowe',
+        component: Gabinet_Weterynaryjny_Informacje_podstawowe
       },
     ],
     beforeEnter: (to, from, next) => {

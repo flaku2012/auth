@@ -24,4 +24,8 @@ export default{
 }
 </script>
 
-
+<style>
+body{
+  background-image: url('http://127.0.0.1:8000/api/../storage/images/systemowe/tlo.png'); 
+}
+</style>

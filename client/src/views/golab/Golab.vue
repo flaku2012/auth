@@ -18,7 +18,7 @@
                         Przenieś do innego gołębnika
                     </a>
                     <router-link to="/golab/1/wystaw_na_bazar" class="list-group-item list-group-item-action text-center">
-                        Wystaw gołebia na bazar
+                        Wystaw gołębia na bazar
                     </router-link>
                     <router-link to="/golab/1/loty" class="list-group-item list-group-item-action text-center">
                         Loty gołębia

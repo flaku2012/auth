@@ -115,3 +115,11 @@ export default {
 }
 </script>
 
+<style>
+.navbar {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.200)!important;
+    margin-top:0px !important;
+    width:100% !important;
+}
+</style>
+

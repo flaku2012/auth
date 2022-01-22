@@ -124,6 +124,7 @@
             <router-link to="">
                 <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/trenuj.jpg'" class="" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
             </router-link>
+            <router-link to="/trening/informacje_podstawowe" class="btn btn-sm btn-secondary">Trening</router-link>
         </div>
     </div>
 

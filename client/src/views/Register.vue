@@ -6,6 +6,7 @@
         <div class="card">
             <form @submit.prevent="submit">
             <div class="card-header">Rejestracja</div>
+            ERRORs {{errors}}
             <div class="card-body">
 
                 <div class="mb-3">
@@ -80,13 +81,15 @@ export default {
             this.errors = error.response.data.errors
             console.log(error.response.data)
         })
-        .finally(()=>{
-            this.$router.replace('/signin')
-            this.form.name = ''
-            this.form.email = ''
-            this.form.password = ''
-            this.form.repeat_password = ''
+        .finally( () => {
+            
+            //this.$router.replace('/signin')
+            //this.form.name = ''
+            //this.form.email = ''
+            //this.form.password = ''
+            //this.form.repeat_password = ''
         })
+
       }
   }
 

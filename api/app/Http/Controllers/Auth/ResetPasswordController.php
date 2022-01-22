@@ -97,6 +97,7 @@ public function change_password(Request $request)
 
     $update_user = User::find($user->id);
     $update_user->password = bcrypt($powtorz_nowe_haslo);
+    $update_user->reset_password_token = NULL;
     $update_user->save();
 
 }
