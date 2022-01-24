@@ -61,7 +61,7 @@
               <div class="card text-center ">
                 <div class="text-center">
                     <router-link to="/golab/1/informacje_podstawowe">
-                        <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/wyszwanc1.jpg'" class="card-img-top" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
+                        <img :src="this.$store.state.main_img_url+'systemowe/wyszwanc1.jpg'" class="card-img-top" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
                     </router-link>
                 </div>
                 <div class="card-body">
@@ -122,12 +122,12 @@
     <div class="row">
         <div class="col-12 text-center">
             <router-link to="">
-                <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/trenuj.jpg'" class="" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
+                <img :src="this.$store.state.main_img_url+'systemowe/trenuj.jpg'" class="" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
             </router-link>
             <router-link to="/trening/informacje_podstawowe" class="btn btn-sm btn-secondary">Trening</router-link>
         </div>
     </div>
-
+    TT: {{this.$store.state.test}}
   </div>
 </template>
 
@@ -138,8 +138,7 @@ export default {
         return{
             pojemnosc_golebnika: 2,
         }
-    },
-    
+    },    
 
 }
 </script>

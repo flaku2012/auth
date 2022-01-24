@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/error404.jpg'" class="card-img-top" alt="...">
+      <img :src="this.$store.state.main_img_url+'systemowe/error404.jpg'" class="card-img-top" alt="...">
 
   </div>
 </template>

@@ -1,6 +1,8 @@
 <template>
     <div>
         <h3 class="text-center">Informacje podstawowe</h3>
+        <hr>
+        
         
     </div>
 </template>

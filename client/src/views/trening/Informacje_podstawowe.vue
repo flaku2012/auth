@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-6 text-center">
                     <h6>Kosze transportowe</h6>
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/kosz_transportowy.png'" class="" alt="nie wczytano zdjęcia">
+                    <img :src="this.$store.state.main_img_url+'systemowe/kosz_transportowy.png'" class="" alt="nie wczytano zdjęcia">
                     <p>
                         Posiadana ilość: 1 <br>
                         Pojemność: 20 gołębi
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-6 text-center">
                     <h6>Samochód</h6>
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_1.png'" class="" alt="nie wczytano zdjęcia">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_1.png'" class="" alt="nie wczytano zdjęcia">
                     <div>(najem)</div>
                     <p>
                         Ładowność: 10 koszy <br>

@@ -4,7 +4,7 @@
     <div class="col-3"></div>
     <div class="col-6">
         <div class="card">
-            <form @submit.prevent="submit">
+            <form @submit.prevent="handleSubmit">
             <div class="card-header">Rejestracja</div>
             ERRORs {{errors}}
             <div class="card-body">
@@ -69,26 +69,30 @@ export default {
   },
 
   methods:{
-        async submit(){
-            await axios.post('auth/register', {
-            name: this.form.name,
-            email: this.form.email,
-            password: this.form.password,
-            repeat_password: this.form.repeat_password,
-        })
-        .catch( (error) => {
-            // handle error
-            this.errors = error.response.data.errors
-            console.log(error.response.data)
-        })
-        .finally( () => {
-            
-            //this.$router.replace('/signin')
-            //this.form.name = ''
-            //this.form.email = ''
-            //this.form.password = ''
-            //this.form.repeat_password = ''
-        })
+        async handleSubmit(){
+
+            try{
+
+                await axios.post('auth/register', {
+                name: this.form.name,
+                email: this.form.email,
+                password: this.form.password,
+                repeat_password: this.form.repeat_password,
+                });
+
+                this.$router.push('/signin');
+
+                this.$notify({
+                    type: 'success',
+                    title: "Powiadomienie",
+                    text: "Rejestracja przebiegła poprawnie. Zaloguj się !",
+                });
+
+            } catch(error){
+                // handle error
+                this.errors = error.response.data.errors
+                console.log(error.response.data)
+            }          
 
       }
   }

@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <p class="text-center"><img :src="'../storage/images/systemowe/golebie/bocian.jpg'" class="img-thumbnail" alt="#"></p>
+                <p class="text-center"><img :src="this.$store.state.main_img_url+'systemowe/golebie/bocian.jpg'" class="img-thumbnail" alt="#"></p>
                 <div class="text-center">
                 Potencjał: <b>256</b> <br>
                 Wiek: <b>1 (roczniak)</b> <br>

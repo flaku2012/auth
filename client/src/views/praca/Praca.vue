@@ -18,7 +18,20 @@
             <!-- <router-view></router-view> -->
             <h3 class="text-center">Praca</h3>
             <hr>
-            FORMULARZ DOTYCZĄCY OD PRACY
+            
+            <form class="text-center">
+            <div class="form-group">
+                    <label for="wybierz_nowy_oddzial">Wybierz ile chcesz pracować:</label>
+                    <select class="form-select" id="wybierz_nowy_oddzial">
+                        <option value="1">1h - 20 zł</option>
+                        <option value="2">8h - 180 zł</option>
+                        <option value="3">12 h - 250 zł</option>
+                    </select>
+                    <small id="emailHelp" class="form-text text-muted">Za zakończoną pracę otrzymasz wynagordzenie.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Pracuj</button>
+        </form>
+
 
         </div>
     </div>

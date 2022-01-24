@@ -1,12 +1,12 @@
 <template>
   <div>
     <h3 class="text-center">Informacje podstawowe</h3>
-    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/choroba.png'" class="" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
+    <img :src="this.$store.state.main_img_url+'systemowe/choroba.png'" class="" alt="nie wczytano zdjęcia" data-toggle="modal" data-target="#staticBackdrop">
     <hr>
     <div>
         <div class="row">
             <div class="col-6">
-                <p class="text-center"><img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/wyszwanc1.jpg'" class="img-thumbnail" alt="#"></p>
+                <p class="text-center"><img :src="this.$store.state.main_img_url+'systemowe/wyszwanc1.jpg'" class="img-thumbnail" alt="#"></p>
             </div>
             <div class="col-6">
                 <b>Potencjał:</b> 256 <br>

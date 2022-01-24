@@ -8,7 +8,7 @@
                 <div class="card mb-3 border-success">
                     <div class="row g-0">
                         <div class="col-md-3">
-                        <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/odznaczenie1.jpg'" class="rounded" alt="...">
+                        <img :src="this.$store.state.main_img_url+'systemowe/odznaczenie1.jpg'" class="rounded" alt="...">
                         </div>
                         <div class="col-md-9">
                         <div class="card-body">
@@ -21,7 +21,7 @@
                 <div class="card mb-3 border-success">
                     <div class="row g-0">
                         <div class="col-md-3">
-                        <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/odznaczenie1.jpg'" class="rounded" alt="...">
+                        <img :src="this.$store.state.main_img_url+'systemowe/odznaczenie1.jpg'" class="rounded" alt="...">
                         </div>
                         <div class="col-md-9">
                         <div class="card-body">
@@ -34,7 +34,7 @@
                 <div class="card bg-light mb-3 border-danger">
                     <div class="row g-0">
                         <div class="col-md-3">
-                        <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/odznaczenie1.jpg'" class="rounded" alt="...">
+                        <img :src="this.$store.state.main_img_url+'systemowe/odznaczenie1.jpg'" class="rounded" alt="...">
                         </div>
                         <div class="col-md-9">
                         <div class="card-body">

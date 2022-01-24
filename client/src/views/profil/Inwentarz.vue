@@ -8,17 +8,17 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col"> 
                             <div class="text-center">
-                                <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/inwentarz1.jpg'" class="card-img-top img-fluid" alt="...">
+                                <img :src="this.$store.state.main_img_url+'systemowe/inwentarz1.jpg'" class="card-img-top img-fluid" alt="...">
                             </div> 
                         </div>
                         <div class="col">     
                                 <div class="text-center">
-                                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/inwentarz0.jpg'" class="card-img-top img-fluid" alt="...">
+                                    <img :src="this.$store.state.main_img_url+'systemowe/inwentarz0.jpg'" class="card-img-top img-fluid" alt="...">
                                 </div>                   
                         </div>
                         <div class="col">                  
                                 <div class="text-center">
-                                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/inwentarz0.jpg'" class="card-img-top img-fluid" alt="...">
+                                    <img :src="this.$store.state.main_img_url+'systemowe/inwentarz0.jpg'" class="card-img-top img-fluid" alt="...">
                                 </div>                
                         </div>
                     </div>

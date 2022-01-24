@@ -7,7 +7,7 @@
             <div class="col">
                 <div class="card">
                 <div class="text-center">
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_1.png'" class="card-img-top" alt="#">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_1.png'" class="card-img-top" alt="#">
                 </div>
                 <div class="card-body">
                 <p class="card-text">
@@ -25,7 +25,7 @@
             <div class="col">
                 <div class="card">
                 <div class="text-center">
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_2.png'" class="card-img-top" alt="#">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_2.png'" class="card-img-top" alt="#">
                 </div>
                 <div class="card-body">
                 <p class="card-text">
@@ -43,7 +43,7 @@
             <div class="col">
                 <div class="card">
                 <div class="text-center">
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_3.png'" class="card-img-top" alt="#">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_3.png'" class="card-img-top" alt="#">
                 </div>
                 <div class="card-body">
                 <p class="card-text">
@@ -61,7 +61,7 @@
             <div class="col">
                 <div class="card">
                 <div class="text-center">
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_4.png'" class="card-img-top" alt="#">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_4.png'" class="card-img-top" alt="#">
                 </div>
                 <div class="card-body">
                 <p class="card-text">
@@ -79,7 +79,7 @@
             <div class="col">
                 <div class="card">
                 <div class="text-center">
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_5.png'" class="card-img-top" alt="#">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_5.png'" class="card-img-top" alt="#">
                 </div>
                 <div class="card-body">
                 <p class="card-text">
@@ -97,7 +97,7 @@
             <div class="col">
                 <div class="card">
                 <div class="text-center">
-                    <img :src="'http://127.0.0.1:8000/api/../storage/images/systemowe/samochod_6.png'" class="card-img-top" alt="#">
+                    <img :src="this.$store.state.main_img_url+'systemowe/samochod_6.png'" class="card-img-top" alt="#">
                 </div>
                 <div class="card-body">
                 <p class="card-text">
