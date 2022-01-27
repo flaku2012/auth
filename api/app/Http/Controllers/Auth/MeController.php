@@ -17,11 +17,16 @@ class MeController extends Controller
 
         $user = $request->user();
 
-        return response()->json([
-            'email' => $user->email,
-            'name' => $user->name,
-            'id' => $user->id,
-        ]);
+        return response()->json($user);
+
+        // tak było wcześniej
+        // return response()->json([
+        //     'email' => $user->email,
+        //     'name' => $user->name,
+        //     'id' => $user->id,
+        //     'in_work' => $user->in_work
+        // ]);
+        
 
     }
 

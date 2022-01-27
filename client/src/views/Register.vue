@@ -6,7 +6,6 @@
         <div class="card">
             <form @submit.prevent="handleSubmit">
             <div class="card-header">Rejestracja</div>
-            ERRORs {{errors}}
             <div class="card-body">
 
                 <div class="mb-3">
@@ -94,7 +93,7 @@ export default {
                 console.log(error.response.data)
             }          
 
-      }
+        }
   }
 
 }

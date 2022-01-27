@@ -8,7 +8,7 @@
                           <h5 class="card-title text-center">Sekcja</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                           <div class="text-center">
-                              <router-link to="/sekcja" class="btn btn-success">WEJDŹ</router-link>
+                              <router-link to="/sekcja/lista_sekcji" class="btn btn-success">WEJDŹ</router-link>
                           </div>
                       </div>
                   </div>

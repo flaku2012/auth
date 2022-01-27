@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\MeController;
+use App\Http\Controllers\Work\WorkController;
 
 use App\Mail\WelcomeMail;
 use App\Mail\ResetPasswordMail;
@@ -42,3 +43,9 @@ Route::post('/send_token_email', [ResetPasswordController::class, 'send_token_em
 Route::post('/validate_token', [ResetPasswordController::class, 'validate_token'] );
 Route::post('/reset_password', [ResetPasswordController::class, 'reset_password'] );
 Route::post('/change_password' , [ResetPasswordController::class, 'change_password'] );
+
+Route::group(['prefix' => 'work'], function(){
+    Route::post('start' , [WorkController::class, 'start']);
+    Route::post('manual_end' , [WorkController::class, 'manual_end']);
+    Route::get('status' , [WorkController::class, 'status']);
+});

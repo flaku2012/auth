@@ -26,6 +26,6 @@ export default{
 
 <style>
 body{
-  background-image: url('http://127.0.0.1:8000/api/../storage/images/systemowe/tlo.png'); 
+  background-image: url('http://www.gra-golebie.pl/api/public/storage/images/systemowe/tlo.png'); 
 }
 </style>

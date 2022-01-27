@@ -15,31 +15,112 @@
 
         <!-- ŚRODEK -->
         <div class="col-9">
-            <!-- <router-view></router-view> -->
             <h3 class="text-center">Praca</h3>
             <hr>
-            
-            <form class="text-center">
-            <div class="form-group">
-                    <label for="wybierz_nowy_oddzial">Wybierz ile chcesz pracować:</label>
-                    <select class="form-select" id="wybierz_nowy_oddzial">
-                        <option value="1">1h - 20 zł</option>
-                        <option value="2">8h - 180 zł</option>
-                        <option value="3">12 h - 250 zł</option>
-                    </select>
-                    <small id="emailHelp" class="form-text text-muted">Za zakończoną pracę otrzymasz wynagordzenie.</small>
+
+            <!-- spinner -->
+            <div :class="{'spinner-border m-5': loading}" class="" role="status">
+                <!-- hidden -->
+                <div :class="{'visually-hidden': loading}"> 
+                    <form class="text-center" @submit.prevent="submit_form">   
+                    <div class="form-group">
+                            <label for="czas_pracy">Wybierz ile chcesz pracować:</label>
+                            <select class="form-select" id="czas_pracy" v-model="form.czas_pracy" :disabled="status_pracy.in_work == 1">
+                                <option disabled value="">Czas pracy</option>
+                                <option value="1" :selected="true">1h - 20 zł</option>
+                                <option value="8">8h - 160 zł</option>
+                                <option value="12">12 h - 240 zł</option>
+                            </select>
+                            <small id="emailHelp" class="form-text text-muted">Za zakończoną pracę otrzymasz wynagrodzenie.</small>
+                    </div>
+                    <p><button type="submit" class="btn btn-primary" :disabled="status_pracy.in_work == 1 || form.czas_pracy==''">Pracuj</button><br></p>
+                    </form>
+                    <div class="text-center">
+                        <p><button type="submit" class="btn btn-danger" @click="manual_end_work" :disabled="status_pracy.in_work == null">Zakończ pracę bez wynagrodzenia</button></p>
+                    </div>
+                </div>
+                <!-- koniec hidden -->
             </div>
-            <button type="submit" class="btn btn-primary">Pracuj</button>
-        </form>
-
-
+            <!-- koniec spinner -->
+        
         </div>
     </div>
 </div>
 </template>
 
 <script>
+import axios from 'axios'
+import { mapGetters } from 'vuex'
 export default {
+    name: 'praca',
+    components: {
+    //
+    },
+
+    data(){
+        return{
+            form: {
+                czas_pracy: ''
+            },
+            status_pracy: [],
+            loading: true,
+        }
+    },
+
+    mounted(){
+        this.WczytajStatusPracy();
+    },
+
+    methods: {
+
+        WczytajStatusPracy(){
+            axios.get('work/status')
+                .then( (response) => {
+                    this.status_pracy = response.data;
+                    console.log(this.status_pracy);
+            })
+            this.loading = false;
+        },
+
+        async submit_form(){
+
+            await axios.post('work/start' , {
+                czas_pracy: this.form.czas_pracy,
+                wynagrodzenie: this.form.czas_pracy*20,
+            });
+
+            this.WczytajStatusPracy();
+
+            this.$notify({
+                type: 'success',
+                title: "Powiadomienie",
+                text: "Jesteś w pracy!",
+            });
+
+        },
+
+        async manual_end_work(){
+
+            await axios.post('work/manual_end');
+
+            this.WczytajStatusPracy();
+
+            this.$notify({
+                type: 'error',
+                title: "Powiadomienie",
+                text: "Zakończyłeś pracę! Nie otrzymałeś wynagrodzenia!",
+            });
+
+        }
+
+    },
+
+    computed:{
+        ...mapGetters({
+            authenticated: 'auth/authenticated',
+            user: 'auth/user',
+        })
+    }
 
 }
 </script>
