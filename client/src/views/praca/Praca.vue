@@ -42,7 +42,11 @@
                 <!-- koniec hidden -->
             </div>
             <!-- koniec spinner -->
-        
+
+            <p>TEST</p>
+            {{parseInt(this.time_work_from_database)}}
+            <Countdown v-if="time_work_from_database !=0" :timestamp="parseInt(this.time_work_from_database)"> </Countdown>
+
         </div>
     </div>
 </div>
@@ -50,11 +54,12 @@
 
 <script>
 import axios from 'axios'
+import Countdown from "@/components/Countdown"
 import { mapGetters } from 'vuex'
 export default {
     name: 'praca',
     components: {
-    //
+        Countdown
     },
 
     data(){
@@ -63,7 +68,9 @@ export default {
                 czas_pracy: ''
             },
             status_pracy: [],
+            time_work_from_database: 0,
             loading: true,
+            now: Date.now(),
         }
     },
 
@@ -73,11 +80,17 @@ export default {
 
     methods: {
 
+        onCountdownEnd(){
+            this.manual_end_work();
+        },
+
         WczytajStatusPracy(){
             axios.get('work/status')
                 .then( (response) => {
                     this.status_pracy = response.data;
-                    console.log(this.status_pracy);
+                    this.time_work_from_database = this.status_pracy.end_time_of_work;
+                    console.log(this.time_work_from_database);
+                    console.log(typeof this.time_work_from_database);
             })
             this.loading = false;
         },

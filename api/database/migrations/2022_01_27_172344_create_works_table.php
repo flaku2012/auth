@@ -10,9 +10,9 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->unsignedbigInteger('user_id');
             $table->boolean('in_work')->default(false);
-            $table->string('end_time_of_work')->nullable();
+            $table->string('end_time_of_work');
             $table->integer('work_salary')->nullable();
             
         });
