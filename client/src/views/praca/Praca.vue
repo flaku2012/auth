@@ -18,11 +18,7 @@
             <h3 class="text-center">Praca</h3>
             <hr>
 
-            <!-- spinner -->
-            <div :class="{'spinner-border m-5': loading}" class="" role="status">
-                <!-- hidden -->
-                <div :class="{'visually-hidden': loading}"> 
-                    <form class="text-center" @submit.prevent="submit_form">   
+                <!-- <form class="text-center" @submit.prevent="submit_form">   
                     <div class="form-group">
                             <label for="czas_pracy">Wybierz ile chcesz pracować:</label>
                             <select class="form-select" id="czas_pracy" v-model="form.czas_pracy" :disabled="status_pracy.in_work == 1">
@@ -34,18 +30,46 @@
                             <small id="emailHelp" class="form-text text-muted">Za zakończoną pracę otrzymasz wynagrodzenie.</small>
                     </div>
                     <p><button type="submit" class="btn btn-primary" :disabled="status_pracy.in_work == 1 || form.czas_pracy==''">Pracuj</button><br></p>
-                    </form>
-                    <div class="text-center">
-                        <p><button type="submit" class="btn btn-danger" @click="manual_end_work" :disabled="status_pracy.in_work == null">Zakończ pracę bez wynagrodzenia</button></p>
-                    </div>
+                </form> -->
+                
+                <div class="alert alert-success" role="alert" v-if="workStatus.in_work == 1">
+                    Jesteś w pracy.
                 </div>
-                <!-- koniec hidden -->
-            </div>
-            <!-- koniec spinner -->
 
-            <p>TEST</p>
-            {{parseInt(this.time_work_from_database)}}
-            <Countdown v-if="time_work_from_database !=0" :timestamp="parseInt(this.time_work_from_database)"> </Countdown>
+                <form class="text-center"  @submit.prevent="submitForm" v-if="workStatus.in_work == null">   
+                    <div class="form-group">
+                            <label for="czas_pracy">Wybierz ile chcesz pracować:</label>
+                            <select class="form-select" id="czas_pracy" v-model="formValue.work_time" :disabled="workStatus.in_work == 1">
+                                <option disabled value="">Czas pracy</option>
+                                <option value="1" :selected="true">1h - 20 zł</option>
+                                <option value="8">8h - 160 zł</option>
+                                <option value="12">12 h - 240 zł</option>
+                            </select>
+                            <small id="emailHelp" class="form-text text-muted">Za zakończoną pracę otrzymasz wynagrodzenie.</small>
+                    </div>
+                    <p><button type="submit" class="btn btn-primary">Pracuj</button><br></p>
+                </form>
+                
+
+                <div class="text-center">
+                    <p><button type="submit" class="btn btn-danger" @click="manualEndWork" v-if="workStatus.in_work == 1">Zakończ pracę bez wynagrodzenia</button></p>
+                </div>
+
+            <p>LICZNIK</p>
+            <Countdown v-if="endTimeFromDatabase !=0" :timestamp="parseInt(endTimeFromDatabase)" @endTimeWork="endTimeWorkFun"> </Countdown>
+
+            <br>
+            ----------------------------------------
+            <br>
+            
+            <TestAddToCart @add-item-to-cart="increaseNumberOfItems"/>
+            --
+            <br>
+            XXXX
+            <br>
+            -
+            <br>
+            {{formValue}}
 
         </div>
     </div>
@@ -55,79 +79,80 @@
 <script>
 import axios from 'axios'
 import Countdown from "@/components/Countdown"
+import TestAddToCart from "@/components/TestAddToCart"
 import { mapGetters } from 'vuex'
+import { onMounted, reactive, ref } from 'vue'
 export default {
     name: 'praca',
     components: {
-        Countdown
+        Countdown,
+        TestAddToCart
     },
 
-    data(){
-        return{
-            form: {
-                czas_pracy: ''
-            },
-            status_pracy: [],
-            time_work_from_database: 0,
-            loading: true,
-            now: Date.now(),
+    setup(){
+        const numberOfItems = ref(0)
+        const workStatus = ref({})
+        const endTimeFromDatabase = ref(0)
+        const formValue = reactive({
+            work_time: 0,
+        })
+
+        async function submitForm(){
+            await axios.post('work/start' , {
+                work_time: formValue.work_time,
+            });
+            statusOfWork();
         }
-    },
 
-    mounted(){
-        this.WczytajStatusPracy();
-    },
+        function increaseNumberOfItems(){
+            numberOfItems.value++
+            //console.log(numberOfItems.value)
+        }   
 
-    methods: {
-
-        onCountdownEnd(){
-            this.manual_end_work();
-        },
-
-        WczytajStatusPracy(){
+        function statusOfWork(){
             axios.get('work/status')
                 .then( (response) => {
-                    this.status_pracy = response.data;
-                    this.time_work_from_database = this.status_pracy.end_time_of_work;
-                    console.log(this.time_work_from_database);
-                    console.log(typeof this.time_work_from_database);
+                    workStatus.value = response.data
+                    endTimeFromDatabase.value = workStatus.value.end_time_of_work
+                    //console.log(endTimeFromDatabase.value)
             })
-            this.loading = false;
-        },
+        }
 
-        async submit_form(){
+        function manualEndWork(){
+            axios.post('work/manual_end');
+            statusOfWork()
+            // this.$notify({
+            //     type: 'error',
+            //     title: "Powiadomienie",
+            //     text: "Zakończyłeś pracę! Nie otrzymałeś wynagrodzenia!",
+            // });
+        }
 
-            await axios.post('work/start' , {
-                czas_pracy: this.form.czas_pracy,
-                wynagrodzenie: this.form.czas_pracy*20,
-            });
+        function endTimeWorkFun(){
+            axios.post('work/end_time_work');
+            statusOfWork()
+        }
 
-            this.WczytajStatusPracy();
+        onMounted( ()=> {
+            statusOfWork()
+        });
 
-            this.$notify({
-                type: 'success',
-                title: "Powiadomienie",
-                text: "Jesteś w pracy!",
-            });
 
-        },
-
-        async manual_end_work(){
-
-            await axios.post('work/manual_end');
-
-            this.WczytajStatusPracy();
-
-            this.$notify({
-                type: 'error',
-                title: "Powiadomienie",
-                text: "Zakończyłeś pracę! Nie otrzymałeś wynagrodzenia!",
-            });
-
+        return{
+            numberOfItems, 
+            workStatus, 
+            endTimeFromDatabase, 
+            formValue, 
+            submitForm, 
+            increaseNumberOfItems, 
+            statusOfWork, 
+            manualEndWork, 
+            endTimeWorkFun
         }
 
     },
 
+    // zweryfikować potrzebę umieszcznia tego tu
     computed:{
         ...mapGetters({
             authenticated: 'auth/authenticated',

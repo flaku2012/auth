@@ -14,7 +14,8 @@ export default {
       default: Date.now(),
     },
   },
-  setup(props) {
+  // zmiana !!!!!!!!!!!!!!!!!!!!!!!
+  setup(props, {emit}) {
     const date = reactive({
       days: 0,
       hours: 0,
@@ -56,7 +57,14 @@ export default {
       date.minutes = date.minutes < 10 ? "0" + date.minutes : date.minutes;
       date.seconds = date.seconds < 10 ? "0" + date.seconds : date.seconds;
 
-      if (diff == 0) clearInterval(timer);
+      if (diff <= 0) {
+          clearInterval(timer);
+          emit('endTimeWork') 
+          date.seconds = '00';
+          date.minutes = '00';
+          date.hours = '00';
+          date.days = '00';
+        }
     }
 
     return { ...toRefs(date) };

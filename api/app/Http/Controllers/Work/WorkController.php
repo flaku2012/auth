@@ -27,16 +27,31 @@ class WorkController extends Controller
         $check_in_work = User::find(Auth()->id())->work;
         
         //zmienne z request
-        $request_work_time = $request->czas_pracy;
-        $work_salary = $request->wynagrodzenie;
+        $request_work_time = $request->work_time;
+        $request_work_time = (int)$request_work_time;
+
+        switch($request_work_time)
+        {
+            case 1:
+                $work_salary = 20;
+                break;
+            case 8:
+                $work_salary = 160;
+                break;
+            case 12:
+                $work_salary = 240;
+                break;
+            default:
+                $work_salary = 0;
+                break;
+        }
 
         // zmienne dot. czasu pracy
         $time_now = Carbon::now();
-        // zmiana !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        $new_time = $time_now->addMinutes((int)$request_work_time)->timestamp;
+        $new_time = $time_now->addSeconds($request_work_time)->timestamp;
         
-        //if( !isset($check_in_work) && $request_work_time !== '' )
-        //{
+        if( !isset($check_in_work) && $request_work_time !== '' )
+        {
             
             $work = new Work;
             $work->user_id = Auth()->id();
@@ -45,9 +60,7 @@ class WorkController extends Controller
             $work->work_salary = $work_salary;
             $work->save();
 
-            // dodać akutalizację salda dla użytkownika
-
-        //}  
+        }  
 
     }
 
@@ -67,11 +80,34 @@ class WorkController extends Controller
 //====================================================================================================
 //====================================================================================================
 
+    public function end_time_work()
+    {
+        
+        $get_status_work = Work::where( 'user_id', Auth()->id() )->first();
+
+        // sprawdzenie czy jest w pracy
+        if( $get_status_work )
+        {
+            //aktualizacja salda użytkownika
+            $update_user = User::find( Auth()->id() );
+            $update_user->money += $get_status_work->work_salary;
+            $update_user->save();
+        }
+
+        $get_status_work->delete();
+        
+    }
+
+
+//====================================================================================================
+//====================================================================================================
+//====================================================================================================
+
     public function status()
     {   
         $get_status_work = Work::where( 'user_id', Auth()->id() )->first();
 
-        if( $get_status_work) {
+        if( $get_status_work ) {
             return $get_status_work;
         }
     }

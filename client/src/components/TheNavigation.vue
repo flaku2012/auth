@@ -30,9 +30,10 @@
           </li>
         </ul>
 
-        <div class="btn-group">
+        <div class="btn-group" v-if="authenticated">
+          <a class="nav-link disabled">TEST: </a>
           <a class="nav-link disabled">Praca: 06:52:20</a>
-          <a class="nav-link disabled">Saldo: 1000 zł</a>
+          <a class="nav-link disabled">Saldo: {{user.money}} zł</a>
         </div>
 
         <div class="btn-group">
@@ -81,7 +82,6 @@
           <router-link to='register' class="btn btn-success">Rejestracja</router-link>
           </div>
         </div>
-        
       </div>
     </div>
   </nav>
@@ -89,13 +89,28 @@
 </template>
 
 <script>
-import { mapGetters , mapActions } from 'vuex'
+import { computed } from 'vue'
+import {  mapActions, useStore } from 'vuex'
 export default {
-    computed:{
-        ...mapGetters({
-            authenticated: 'auth/authenticated',
-            user: 'auth/user',
-        })
+    name: "theNavigation",
+    setup(){
+
+      const store = useStore()
+      const store_user = store.getters['auth/user']
+      const user = computed( () => {
+        if(store_user){
+          return store_user
+        }else{
+          return {}
+        }
+      })
+
+      const authenticated = computed( () => store.getters['auth/authenticated'])
+
+      return{
+        store, user, store_user, authenticated
+      }
+
     },
 
     methods: {

@@ -47,5 +47,6 @@ Route::post('/change_password' , [ResetPasswordController::class, 'change_passwo
 Route::group(['prefix' => 'work'], function(){
     Route::post('start' , [WorkController::class, 'start']);
     Route::post('manual_end' , [WorkController::class, 'manual_end']);
+    Route::post('end_time_work' , [WorkController::class, 'end_time_work']);
     Route::get('status' , [WorkController::class, 'status']);
 });
