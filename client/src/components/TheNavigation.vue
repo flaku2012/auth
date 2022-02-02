@@ -96,10 +96,11 @@ export default {
     setup(){
 
       const store = useStore()
-      const store_user = store.getters['auth/user']
+      //const store_user = store.getters['auth/user']
       const user = computed( () => {
-        if(store_user){
-          return store_user
+        if(store.getters['auth/user']){
+          console.log(store.getters['auth/user'])
+          return store.getters['auth/user']
         }else{
           return {}
         }
@@ -108,7 +109,7 @@ export default {
       const authenticated = computed( () => store.getters['auth/authenticated'])
 
       return{
-        store, user, store_user, authenticated
+        store, user, authenticated
       }
 
     },
