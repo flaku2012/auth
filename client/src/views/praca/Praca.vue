@@ -80,7 +80,7 @@
 import axios from 'axios'
 import Countdown from "@/components/Countdown"
 import TestAddToCart from "@/components/TestAddToCart"
-import { mapGetters } from 'vuex'
+import { mapGetters, useStore } from 'vuex'
 import { onMounted, reactive, ref } from 'vue'
 export default {
     name: 'praca',
@@ -90,12 +90,18 @@ export default {
     },
 
     setup(){
+        const store = useStore()
         const numberOfItems = ref(0)
         const workStatus = ref({})
         const endTimeFromDatabase = ref(0)
         const formValue = reactive({
             work_time: 0,
         })
+
+        function updateDataUser()
+        {
+            console.log(store.dispatch('auth/getUser'));
+        }
 
         async function submitForm(){
             await axios.post('work/start' , {
@@ -131,6 +137,7 @@ export default {
         function endTimeWorkFun(){
             axios.post('work/end_time_work');
             statusOfWork()
+            updateDataUser()
         }
 
         onMounted( ()=> {
@@ -147,7 +154,8 @@ export default {
             increaseNumberOfItems, 
             statusOfWork, 
             manualEndWork, 
-            endTimeWorkFun
+            endTimeWorkFun,
+            updateDataUser
         }
 
     },

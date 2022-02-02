@@ -26,7 +26,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link disabled">XXXX</a>
           </li>
         </ul>
 
@@ -96,17 +96,8 @@ export default {
     setup(){
 
       const store = useStore()
-      //const store_user = store.getters['auth/user']
-      const user = computed( () => {
-        if(store.getters['auth/user']){
-          console.log(store.getters['auth/user'])
-          return store.getters['auth/user']
-        }else{
-          return {}
-        }
-      })
-
-      const authenticated = computed( () => store.getters['auth/authenticated'])
+      const user = computed(() => store.getters['auth/user']);
+       const authenticated = computed( () => store.getters['auth/authenticated'])
 
       return{
         store, user, authenticated
@@ -116,7 +107,7 @@ export default {
 
     methods: {
         ...mapActions({
-            signOutAction: 'auth/signOut'
+            signOutAction: 'auth/signOut',
         }),
         signOut(){
             this.signOutAction().then(() => {
@@ -124,7 +115,7 @@ export default {
                     name: 'Home'
                 })
             })
-        }
+        },
 
     }
 
