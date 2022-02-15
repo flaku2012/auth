@@ -16,6 +16,9 @@
 
         <link rel="stylesheet" href="{{assets('/css/app.css')}}">
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
+
         <style>
             body {
                 font-family: 'Nunito', sans-serif;

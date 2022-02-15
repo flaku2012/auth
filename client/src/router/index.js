@@ -15,6 +15,7 @@ import Profile_Wiadomosc_grupowa from '../views/profil/Wiadomosc_grupowa.vue'
 import Profile_Zadania from '../views/profil/Zadania.vue'
 import Profile_Odznaczenia from '../views/profil/Odznaczenia.vue'
 import Profile_Inwentarz from '../views/profil/Inwentarz.vue'
+import Profile_Czat from '../views/profil/Czat.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Miasto from '../views/miasto/Miasto.vue'
 import Wystawy from '../views/wystawy/Wystawy.vue'
@@ -132,6 +133,10 @@ const routes = [
       {
         path: 'inwentarz',
         component: Profile_Inwentarz
+      },
+      {
+        path: 'czat',
+        component: Profile_Czat
       },
     ],
     beforeEnter: (to, from, next) => {

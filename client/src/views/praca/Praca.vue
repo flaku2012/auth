@@ -100,7 +100,8 @@ export default {
 
         function updateDataUser()
         {
-            console.log(store.dispatch('auth/getUser'));
+            //console.log(store.dispatch('auth/getUser'));
+            store.dispatch('auth/getUser');
         }
 
         async function submitForm(){

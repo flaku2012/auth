@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\User\Work;
+use App\Models\User\Message;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -43,6 +44,11 @@ class User extends Authenticatable implements JWTSubject
     public function work()
     {
         return $this->hasOne(Work::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 
 }

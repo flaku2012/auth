@@ -15,6 +15,27 @@ require('@/store/subscriber')
 // localhost : http://127.0.0.1:8000/api
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 
+import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'local',
+    wsHost: '127.0.0.1:6001',
+    wsPort: 6001,
+    wssPort: 6001,
+    disableStats: true,
+    encrypted: false,
+    enabledTransports: ['ws', 'wss'],
+
+    // // auth: {
+    // //     headers: {
+    // //         /** I'm using access tokens to access  **/
+    // //       Authorization: "Bearer " + localStorage.getItem('token')
+    // //     }
+    // //   }
+});
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(()=>{
     createApp(App)

@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\MeController;
 use App\Http\Controllers\Work\WorkController;
+use App\Http\Controllers\Profile\MessagesController;
 
 use App\Mail\WelcomeMail;
 use App\Mail\ResetPasswordMail;
@@ -50,3 +51,23 @@ Route::group(['prefix' => 'work'], function(){
     Route::post('end_time_work' , [WorkController::class, 'end_time_work']);
     Route::get('status' , [WorkController::class, 'status']);
 });
+
+
+///TEST WEBCOCKETÓW
+// Route::get( '/broadcast', function(){
+//     event(new Hello());
+// });
+
+Route::get('chat' , [MessagesController::class, 'chat']);
+Route::post('send' , [MessagesController::class, 'send']);
+Route::get('messages' , [MessagesController::class, 'fetchMessages']);
+Route::post('messages' , [MessagesController::class, 'sendMessage']);
+
+Route::get('weryf' , [MessagesController::class, 'weryfikacja']);
+
+// nie musi być zakomentowane ?
+// Broadcast::channel('chatcourse', function($user){
+//     return $user;
+// });
+
+// KONIEC TEST WEBCOCKETÓW

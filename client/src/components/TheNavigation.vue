@@ -97,7 +97,7 @@ export default {
 
       const store = useStore()
       const user = computed(() => store.getters['auth/user']);
-       const authenticated = computed( () => store.getters['auth/authenticated'])
+      const authenticated = computed( () => store.getters['auth/authenticated'])
 
       return{
         store, user, authenticated

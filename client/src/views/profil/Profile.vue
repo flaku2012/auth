@@ -28,6 +28,9 @@
                 <router-link to="/profile/zadania" class="list-group-item list-group-item-action text-center" active-class="active">
                     Zadania
                 </router-link>
+                <router-link to="/profile/czat" class="list-group-item list-group-item-action text-center" active-class="active">
+                    Czat
+                </router-link>
             </div>
         </div>
 
