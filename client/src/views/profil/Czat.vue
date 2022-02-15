@@ -89,7 +89,7 @@ export default {
             })
 
             newMessageCourse.value = ''
-            fetchMessages()
+            //fetchMessages()
 
         }
 
@@ -128,7 +128,7 @@ export default {
 
             window.Echo.private('chatcourse')
                 .listen('MessageSent', (event) => {
-                    //messagesCourse.value.push(event.message)
+                    messagesCourse.value.push(event.message)
                     console.log("Event: "+event.message);
             })
 
