@@ -57,20 +57,7 @@
 
             <p>LICZNIK</p>
             <Countdown v-if="endTimeFromDatabase !=0" :timestamp="parseInt(endTimeFromDatabase)" @endTimeWork="endTimeWorkFun"> </Countdown>
-
-            <br>
-            ----------------------------------------
-            <br>
-            
-            <TestAddToCart @add-item-to-cart="increaseNumberOfItems"/>
-            --
-            <br>
-            XXXX
-            <br>
-            -
-            <br>
-            {{formValue}}
-
+    
         </div>
     </div>
 </div>
@@ -79,31 +66,29 @@
 <script>
 import axios from 'axios'
 import Countdown from "@/components/Countdown"
-import TestAddToCart from "@/components/TestAddToCart"
 import { mapGetters, useStore } from 'vuex'
 import { onMounted, reactive, ref } from 'vue'
 export default {
     name: 'praca',
     components: {
         Countdown,
-        TestAddToCart
     },
 
     setup(){
         const store = useStore()
-        const numberOfItems = ref(0)
         const workStatus = ref({})
         const endTimeFromDatabase = ref(0)
         const formValue = reactive({
             work_time: 0,
         })
 
+        // pobranie danych użytkownika
         function updateDataUser()
         {
-            //console.log(store.dispatch('auth/getUser'));
             store.dispatch('auth/getUser');
         }
 
+        // formularz
         async function submitForm(){
             await axios.post('work/start' , {
                 work_time: formValue.work_time,
@@ -111,30 +96,22 @@ export default {
             statusOfWork();
         }
 
-        function increaseNumberOfItems(){
-            numberOfItems.value++
-            //console.log(numberOfItems.value)
-        }   
-
+        // funkcja sprawdzania statusu pracy (czy w pracy czy nie)
         function statusOfWork(){
             axios.get('work/status')
                 .then( (response) => {
                     workStatus.value = response.data
                     endTimeFromDatabase.value = workStatus.value.end_time_of_work
-                    //console.log(endTimeFromDatabase.value)
             })
         }
 
+        // funkcja zakończenia pracy bez wynagrodznia - manulana
         function manualEndWork(){
             axios.post('work/manual_end');
             statusOfWork()
-            // this.$notify({
-            //     type: 'error',
-            //     title: "Powiadomienie",
-            //     text: "Zakończyłeś pracę! Nie otrzymałeś wynagrodzenia!",
-            // });
         }
 
+        // funkcja wykonująca czynności po zakończeniu odliczania czasu
         function endTimeWorkFun(){
             axios.post('work/end_time_work');
             statusOfWork()
@@ -147,12 +124,10 @@ export default {
 
 
         return{
-            numberOfItems, 
             workStatus, 
             endTimeFromDatabase, 
             formValue, 
             submitForm, 
-            increaseNumberOfItems, 
             statusOfWork, 
             manualEndWork, 
             endTimeWorkFun,

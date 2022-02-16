@@ -53,21 +53,9 @@ Route::group(['prefix' => 'work'], function(){
 });
 
 
-///TEST WEBCOCKETÓW
-// Route::get( '/broadcast', function(){
-//     event(new Hello());
-// });
 
-Route::get('chat' , [MessagesController::class, 'chat']);
-Route::post('send' , [MessagesController::class, 'send']);
+// wiadomości + websocket
 Route::get('messages' , [MessagesController::class, 'fetchMessages']);
 Route::post('messages' , [MessagesController::class, 'sendMessage']);
 
 Route::get('weryf' , [MessagesController::class, 'weryfikacja']);
-
-// nie musi być zakomentowane ?
-// Broadcast::channel('chatcourse', function($user){
-//     return $user;
-// });
-
-// KONIEC TEST WEBCOCKETÓW

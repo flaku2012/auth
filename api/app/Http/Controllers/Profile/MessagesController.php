@@ -31,18 +31,11 @@ class MessagesController extends Controller
         ]);
 
         broadcast(new MessageSent($message->load('user')))->toOthers();
-        //return $message->load('user');
+        
         return ['status' => 'success'];
     }
 
-    // nieaktywne - testy
-    public function send(Request $request)
-    {
-        //event( new ChatEvent($request->message, Auth()->id() ) );
-        event( new ChatEvent($request->message, Auth()->id() ) )->toOthers();
-    }
-
-    // funkcja do testowania - do testowaniw
+    // funkcja do testowania - do testowania
     public function weryfikacja()
     {
         

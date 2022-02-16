@@ -48,7 +48,7 @@ class WorkController extends Controller
 
         // zmienne dot. czasu pracy
         $time_now = Carbon::now();
-        $new_time = $time_now->addSeconds($request_work_time)->timestamp;
+        $new_time = $time_now->addMinutes($request_work_time)->timestamp;
         
         if( !isset($check_in_work) && $request_work_time !== '' )
         {
