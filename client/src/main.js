@@ -10,9 +10,8 @@ import VueCountdown from '@chenfengyuan/vue-countdown';
 
 require('@/store/subscriber')
 
-// dokonać zmiany przy przesłaniu na serwer produkcyjny
-// wg. az.pl - http://www.gra-golebie.pl/api/public/api/
-// localhost : http://127.0.0.1:8000/api
+const app = createApp(App);
+
 const baseURL = axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://www.gra-golebie.pl/api/public/api/' : 'http://127.0.0.1:8000'
 axios.defaults.baseURL = `${baseURL}/api`
 
@@ -44,8 +43,13 @@ window.Echo.connector.pusher.connection.bind('connected', () => {
 });
 
 
+// import mitt from 'mitt'; 
+// const emitter = mitt();
+// app.config.globalProperties.$emitter = emitter;
+
+
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(()=>{
-    createApp(App)
+    app
     .component(VueCountdown.name, VueCountdown)
     .use(store)
     .use(router)

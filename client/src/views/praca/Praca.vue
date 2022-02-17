@@ -57,7 +57,13 @@
 
             <p>LICZNIK</p>
             <Countdown v-if="endTimeFromDatabase !=0" :timestamp="parseInt(endTimeFromDatabase)" @endTimeWork="endTimeWorkFun"> </Countdown>
-    
+            ==================================================== <br>
+            Mouse position is at: {{ x }}, {{ y }} <br>
+            COUNT: <br>
+            -----<br>
+            a: {{date}}
+            ------<br>
+
         </div>
     </div>
 </div>
@@ -66,8 +72,10 @@
 <script>
 import axios from 'axios'
 import Countdown from "@/components/Countdown"
-import { mapGetters, useStore } from 'vuex'
+import { useStore } from 'vuex'
 import { onMounted, reactive, ref } from 'vue'
+import { useMouse } from '@/composables/mouse'
+import { useCountdown } from '@/composables/countdown'
 export default {
     name: 'praca',
     components: {
@@ -76,11 +84,20 @@ export default {
 
     setup(){
         const store = useStore()
+
+        //test composable
+        const { x, y } = useMouse()
+        const { date } = useCountdown(1645113000)
+
+        // zweryfikować poprawność
+        //const isAuthenticated = computed( () => store.getters.auth.authenticated )
+
         const workStatus = ref({})
         const endTimeFromDatabase = ref(0)
         const formValue = reactive({
             work_time: 0,
         })
+
 
         // pobranie danych użytkownika
         function updateDataUser()
@@ -124,6 +141,9 @@ export default {
 
 
         return{
+            x,
+            y,
+            date,
             workStatus, 
             endTimeFromDatabase, 
             formValue, 
@@ -131,18 +151,10 @@ export default {
             statusOfWork, 
             manualEndWork, 
             endTimeWorkFun,
-            updateDataUser
+            updateDataUser,
         }
 
     },
-
-    // zweryfikować potrzebę umieszcznia tego tu
-    computed:{
-        ...mapGetters({
-            authenticated: 'auth/authenticated',
-            user: 'auth/user',
-        })
-    }
 
 }
 </script>
