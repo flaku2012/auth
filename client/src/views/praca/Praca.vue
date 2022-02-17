@@ -81,13 +81,17 @@ export default {
     components: {
         Countdown,
     },
+    props: {
+    title: String
+    },
 
-    setup(){
+    setup(props, { $emitter }){
         const store = useStore()
+        console.log(props.title)
 
         //test composable
         const { x, y } = useMouse()
-        const { date } = useCountdown(1645122600)
+        const { date } = useCountdown(1645122660)
 
         // this.emitter.on('customEvent', (evt) => {
         //     this.cosik = evt.eventContent;
@@ -143,6 +147,7 @@ export default {
         onMounted( ()=> {
             statusOfWork()
             //this.$emitter.on('customEvent', endTimeWorkFun())
+            console.log($emitter)
         });
 
 
