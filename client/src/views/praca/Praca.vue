@@ -85,7 +85,7 @@ export default {
     title: String
     },
 
-    setup(props, { $emitter }){
+    setup(props, context){
         const store = useStore()
         console.log(props.title)
 
@@ -147,7 +147,7 @@ export default {
         onMounted( ()=> {
             statusOfWork()
             //this.$emitter.on('customEvent', endTimeWorkFun())
-            console.log($emitter)
+            console.log('context', context)
         });
 
 
