@@ -14,7 +14,7 @@ require('@/store/subscriber')
 const emitter = mitt();
 const app = createApp(App);
 
-app.config.globalProperties.emitter = emitter
+app.config.globalProperties.$emitter = emitter
 
 const baseURL = axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://www.gra-golebie.pl/api/public/api/' : 'http://127.0.0.1:8000'
 axios.defaults.baseURL = `${baseURL}/api`
