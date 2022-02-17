@@ -31,7 +31,7 @@ export function useCountdown(timestamp) {
     let emitter;
 
     if (internalInstance) {
-        emitter = internalInstance.appContext.config.globalProperties.emitter;
+        emitter = internalInstance.appContext.config.globalProperties.$emitter;
     } else {
         nextTick()
     }
