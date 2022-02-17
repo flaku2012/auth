@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css"
 
 import { createApp } from 'vue'
+import mitt from 'mitt'; 
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -10,7 +11,10 @@ import VueCountdown from '@chenfengyuan/vue-countdown';
 
 require('@/store/subscriber')
 
+const emitter = mitt();
 const app = createApp(App);
+
+app.config.globalProperties.emitter = emitter
 
 const baseURL = axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://www.gra-golebie.pl/api/public/api/' : 'http://127.0.0.1:8000'
 axios.defaults.baseURL = `${baseURL}/api`
@@ -43,9 +47,6 @@ window.Echo.connector.pusher.connection.bind('connected', () => {
 });
 
 
-// import mitt from 'mitt'; 
-// const emitter = mitt();
-// app.config.globalProperties.$emitter = emitter;
 
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(()=>{

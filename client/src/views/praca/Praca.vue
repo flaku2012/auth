@@ -87,8 +87,15 @@ export default {
 
         //test composable
         const { x, y } = useMouse()
-        const { date } = useCountdown(1645113000)
+        const { date } = useCountdown(1645121460)
 
+        this.emitter.on('customEvent', endTimeWorkFun())
+
+        // this.emitter.on('customEvent', (evt) => {
+        //     this.cosik = evt.eventContent;
+        // })
+
+        
         // zweryfikować poprawność
         //const isAuthenticated = computed( () => store.getters.auth.authenticated )
 

@@ -1,8 +1,7 @@
-import { onBeforeUnmount, onMounted, reactive } from "vue";
+import { onBeforeUnmount, onMounted, reactive, getCurrentInstance, nextTick } from "vue";
 
+export function useCountdown(timestamp) {
 
-export function useCountdown(timestamp)
-{
     const date = reactive({
         days: 0,
         hours: 0,
@@ -12,10 +11,10 @@ export function useCountdown(timestamp)
 
     const timer = setInterval(() => calculateDate(), 1000);
 
-    onMounted( 
-        ()=> calculateDate() 
+    onMounted(
+        () => calculateDate()
     )
-    
+
     onBeforeUnmount(
         () => clearInterval(timer)
     )
@@ -26,6 +25,18 @@ export function useCountdown(timestamp)
     //       calculateDate();
     //     }
     // );
+
+    const internalInstance = getCurrentInstance();
+
+    let emitter;
+
+    if (internalInstance) {
+        emitter = internalInstance.appContext.config.globalProperties.emitter;
+    } else {
+        nextTick()
+    }
+
+
 
     function calculateDate() {
         const endDate = new Date(timestamp * 1000);
@@ -47,17 +58,18 @@ export function useCountdown(timestamp)
 
         if (diff <= 0) {
             clearInterval(timer);
+            emitter?.emit('customEvent', { 'eventContent': 'leuleu' })
+
             //emit('endTimeWork') 
             timestamp = 0
             date.seconds = '00';
             date.minutes = '00';
             date.hours = '00';
             date.days = '00';
-            }
+        }
     }
 
 
     return { date }
 
 }
-
