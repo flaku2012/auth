@@ -34,9 +34,9 @@ import axios from 'axios'
 import { useStore } from 'vuex'
 export default {
     name: 'czat',
-
     setup()
     {
+
         const store = useStore();
         const logged_user = ref(store.getters['auth/user']);
 

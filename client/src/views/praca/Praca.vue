@@ -63,6 +63,15 @@
             -----<br>
             a: {{date}}
             ------<br>
+            
+
+            <!-- Z YOUTUBE -->
+            <button @click="testFun">TeST</button>
+
+            <div @customEvent="onSubmit">
+                TEST
+            </div>
+            <!-- Z YOUTUBE -->
 
         </div>
     </div>
@@ -85,9 +94,10 @@ export default {
     title: String
     },
 
-    setup(props, context){
+    setup(props, {emit}){
         const store = useStore()
-        console.log(props.title)
+        console.log(props)
+
 
         //test composable
         const { x, y } = useMouse()
@@ -106,7 +116,6 @@ export default {
         const formValue = reactive({
             work_time: 0,
         })
-
 
         // pobranie danych użytkownika
         function updateDataUser()
@@ -144,10 +153,27 @@ export default {
             updateDataUser()
         }
 
+        // z YOUTUBE (tylko nazwa funkcji inna) !!!!!!!
+        const testFun = () => 
+        {
+            emit('customEvent', 'Hello World')
+            //console.log('emit', context.emit )
+        }
+
+        // z YOUTUBE !!!!!!!
+        function onSubmit(event){
+            console.log(event)
+        }
+
         onMounted( ()=> {
-            statusOfWork()
-            //this.$emitter.on('customEvent', endTimeWorkFun())
-            console.log('context', context)
+            //statusOfWork()
+            //emit.$on('customEvent', endTimeWorkFun())
+            //emit('customEvent')
+            //console.log('emit', emit('my-event', {'eventContent': 'String changed'}))
+
+            //context.emit('customEvent', 'Hello World')
+            //console.log( emitter )
+            
         });
 
 
@@ -163,9 +189,16 @@ export default {
             manualEndWork, 
             endTimeWorkFun,
             updateDataUser,
+            testFun,
+            onSubmit
         }
 
     },
+    //emits: ['customEvent']
+
+    // mounted() {
+    //     console.log('emmiter', this.$emitter)
+    // }
 
 }
 </script>
