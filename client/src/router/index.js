@@ -16,6 +16,8 @@ import Profile_Zadania from '../views/profil/Zadania.vue'
 import Profile_Odznaczenia from '../views/profil/Odznaczenia.vue'
 import Profile_Inwentarz from '../views/profil/Inwentarz.vue'
 import Profile_Czat from '../views/profil/Czat.vue'
+import Profile_Testowy_Widok from '../views/profil/TestowyWidok.vue'
+import Profile_Testowy_Widok2 from '../views/profil/TestowyWidok2.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Miasto from '../views/miasto/Miasto.vue'
 import Wystawy from '../views/wystawy/Wystawy.vue'
@@ -137,6 +139,14 @@ const routes = [
       {
         path: 'czat',
         component: Profile_Czat
+      },
+      {
+        path: 'testowywidok',
+        component: Profile_Testowy_Widok
+      },
+      {
+        path: 'testowywidok2',
+        component: Profile_Testowy_Widok2
       },
     ],
     beforeEnter: (to, from, next) => {

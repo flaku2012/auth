@@ -94,6 +94,7 @@ export default {
     title: String
     },
 
+
     setup(props, {emit}){
         const store = useStore()
         console.log(props)
@@ -162,7 +163,7 @@ export default {
 
         // z YOUTUBE !!!!!!!
         function onSubmit(event){
-            console.log(event)
+            console.log('sss', event)
         }
 
         onMounted( ()=> {

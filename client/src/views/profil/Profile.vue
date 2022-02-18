@@ -31,6 +31,11 @@
                 <router-link to="/profile/czat" class="list-group-item list-group-item-action text-center" active-class="active">
                     Czat
                 </router-link>
+                <router-link to="/profile/testowywidok" class="list-group-item list-group-item-action text-center" active-class="active">
+                    Testowy Widok
+                </router-link><router-link to="/profile/testowywidok2" class="list-group-item list-group-item-action text-center" active-class="active">
+                    Testowy Widok2
+                </router-link>
             </div>
         </div>
 
