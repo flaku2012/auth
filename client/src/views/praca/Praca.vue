@@ -102,7 +102,7 @@ export default {
 
         //test composable
         const { x, y } = useMouse()
-        const { date } = useCountdown(1645122660)
+        const { date } = useCountdown(1645272308)
 
         // this.emitter.on('customEvent', (evt) => {
         //     this.cosik = evt.eventContent;
@@ -167,7 +167,7 @@ export default {
         }
 
         onMounted( ()=> {
-            //statusOfWork()
+            statusOfWork()
             //emit.$on('customEvent', endTimeWorkFun())
             //emit('customEvent')
             //console.log('emit', emit('my-event', {'eventContent': 'String changed'}))

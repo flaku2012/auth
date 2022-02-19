@@ -3,10 +3,12 @@
     <UserComponent2
     @submit2="onSubmitEmit"
     ></UserComponent2>
+    || {{czas}} ||
   </div>
 </template>
 
 <script>
+import { Zegar } from '@/composables/testcomposable'
 import UserComponent2 from '@/components/UserComponent2.vue'
 export default {
   components: {
@@ -15,13 +17,15 @@ export default {
 
   setup()
   {
+    const { czas } = Zegar(10)
 
-    const onSubmitEmit = (val) => {
+
+    function onSubmitEmit(val){
       console.log(val)
     }
 
     return {
- 
+      czas,
       onSubmitEmit
     }
   }

@@ -4,7 +4,6 @@
     <div>
       <button @click="submitEmit" >Wyślij emita</button>
     </div>
-    <p @submit2="onSubmitEmit"></p>
   </div>
 </template>
 
@@ -16,7 +15,7 @@ export default {
     console.log(props)
 
     const submitEmit = () => {
-      emit('submit2', 'Test wysyłku emita')
+      emit('submit2', 'Test wysyłku emita2')
       //console.log('test')
     }
 

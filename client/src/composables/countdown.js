@@ -59,7 +59,6 @@ export function useCountdown(timestamp) {
         if (diff <= 0) {
             clearInterval(timer);
             emitter?.emit('customEvent', { 'eventContent': 'leuleu' })
-
             //emit('endTimeWork') 
             timestamp = 0
             date.seconds = '00';
