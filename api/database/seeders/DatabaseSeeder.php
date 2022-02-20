@@ -21,5 +21,16 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin123'),
             'reset_password_token' => 'tokentokentokentoken',
         ]);
+
+        DB::table('pigeon_hawks')->insert([
+            'user_id' => 1,
+            'name' => 'Gołebnik podstawowy',
+        ]);
+
+        DB::table('pigeon_hawks')->insert([
+            'user_id' => 1,
+            'name' => 'Gołebnik rozpłodowy',
+        ]);
+
     }
 }

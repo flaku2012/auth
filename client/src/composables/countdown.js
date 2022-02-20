@@ -20,10 +20,8 @@ export function useCountdown(timestamp) {
     )
 
     // watch(
-    //     () => props.timestamp,
-    //     () => {
-    //       calculateDate();
-    //     }
+    //     () => calculateDate()
+        
     // );
 
     const internalInstance = getCurrentInstance();

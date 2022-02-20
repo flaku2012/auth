@@ -1,32 +1,31 @@
 <template>
   <div>
-    <UserComponent2
-    @submit2="onSubmitEmit"
-    ></UserComponent2>
-    || {{czas}} ||
+    <div v-for="product in userPigeonHawks" :key="product.id">
+      I: {{ product }}
+    </div>
+    TEST: ||  ||
   </div>
 </template>
 
 <script>
-import { Zegar } from '@/composables/testcomposable'
-import UserComponent2 from '@/components/UserComponent2.vue'
+import { computed, onMounted } from '@vue/runtime-core'
+import { useStore } from 'vuex'
 export default {
-  components: {
-    UserComponent2
-  },
-
+  
   setup()
   {
-    const { czas } = Zegar(10)
+    const store = useStore()
 
+    const userPigeonHawks = computed( ()=> store.state.pigeonHawk.userPigeonHawks )
 
-    function onSubmitEmit(val){
-      console.log(val)
-    }
+ 
+    onMounted( ()=> {
+        //console.log(store.state.pigeonHawk.userPigeonHawks)
+        store.dispatch('pigeonHawk/getUserPigeonHawks')
+    })
 
     return {
-      czas,
-      onSubmitEmit
+     userPigeonHawks
     }
   }
 

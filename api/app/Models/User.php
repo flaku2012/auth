@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\User\Work;
 use App\Models\User\Message;
+use App\Models\PigeonHawk;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -49,6 +50,11 @@ class User extends Authenticatable implements JWTSubject
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function pigeonhawks()
+    {
+        return $this->hasMany(PigeonHawk::class);
     }
 
 }

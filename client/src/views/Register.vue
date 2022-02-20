@@ -81,11 +81,11 @@ export default {
 
                 this.$router.push('/signin');
 
-                this.$notify({
-                    type: 'success',
-                    title: "Powiadomienie",
-                    text: "Rejestracja przebiegła poprawnie. Zaloguj się !",
-                });
+                // this.$notify({
+                //     type: 'success',
+                //     title: "Powiadomienie",
+                //     text: "Rejestracja przebiegła poprawnie. Zaloguj się !",
+                // });
 
             } catch(error){
                 // handle error

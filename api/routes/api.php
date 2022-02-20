@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\MeController;
 use App\Http\Controllers\Work\WorkController;
 use App\Http\Controllers\Profile\MessagesController;
+use App\Http\Controllers\PigeonHawks\PigeonHawksController;
 
 use App\Mail\WelcomeMail;
 use App\Mail\ResetPasswordMail;
@@ -50,6 +51,11 @@ Route::group(['prefix' => 'work'], function(){
     Route::post('manual_end' , [WorkController::class, 'manual_end']);
     Route::post('end_time_work' , [WorkController::class, 'end_time_work']);
     Route::get('status' , [WorkController::class, 'status']);
+});
+
+// gołębniki - PigeonHawks
+Route::group(['prefix' => 'pigeonhawks'], function(){
+    Route::get('get_user_pigeon_hawks' , [PigeonHawksController::class, 'get_user_pigeon_hawks']);
 });
 
 
