@@ -16,7 +16,7 @@ class SignInController extends Controller
         }
 
         return response()->json([
-            'token' => $token
+            'token' => $token,
         ]);
 
     }

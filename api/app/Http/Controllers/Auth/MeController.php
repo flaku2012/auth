@@ -16,15 +16,16 @@ class MeController extends Controller
     {
 
         $user = $request->user();
+        //$user_work = $request->user()->work;
 
         return response()->json($user);
 
-        // tak było wcześniej
+        //tak było wcześniej
         // return response()->json([
         //     'email' => $user->email,
         //     'name' => $user->name,
         //     'id' => $user->id,
-        //     'in_work' => $user->in_work
+        //     'user_work' => $user_work,
         // ]);
         
 

@@ -17,7 +17,18 @@ class CreatePigeonHawksTable extends Migration
             $table->id();
             $table->integer('user_id')->unsigned();
             $table->text('name');
-            $table->timestamps();
+            $table->tinyInteger('max_quantity_pigeons')->default(20)->comment('Pojemność gołębnika');
+            $table->double('level_clean')->default(90)->comment('Poziom czystości');
+            $table->tinyInteger('max_level_clean')->default(100);
+            $table->double('level_food', 4, 2)->default(40)->comment('Poziom karmika');
+            $table->tinyInteger('max_level_food')->default(100);
+            $table->double('level_water', 4, 2)->default(30)->comment('Poziom poideł');
+            $table->tinyInteger('max_level_water')->default(100);
+            $table->double('level_grit', 4, 2)->default(95)->comment('Poziom grytu');
+            $table->tinyInteger('max_level_grit')->default(100);
+            $table->double('level_repair', 4, 2)->default(100)->comment('Stan gołębnika - naprawa');
+            $table->tinyInteger('max_level_repair')->default(100);
+            $table->boolean('on_show')->default(false)->comment('Widoczność gołębnika na wystawie');
         });
     }
 

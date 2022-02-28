@@ -30,8 +30,9 @@ class MessagesController extends Controller
             'message' => $request->message
         ]);
 
-        broadcast(new MessageSent($message->load('user')))->toOthers();
-        
+        broadcast(new MessageSent($message->loadMissing('user')))->toOthers();
+        // ->toOthers();
+                
         return ['status' => 'success'];
     }
 

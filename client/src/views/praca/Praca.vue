@@ -73,6 +73,8 @@
             </div>
             <!-- Z YOUTUBE -->
 
+            <button @click="toLocalStorage">Dodaj do local-storage</button>
+
         </div>
     </div>
 </div>
@@ -97,7 +99,13 @@ export default {
 
     setup(props, {emit}){
         const store = useStore()
-        console.log(props)
+        //console.log(props)
+
+
+        // function toLocalStorage()
+        // {
+        //     console.log(localStorage.setItem('user_end_time_of_work', 12123123123))
+        // }
 
 
         //test composable
@@ -138,12 +146,16 @@ export default {
                 .then( (response) => {
                     workStatus.value = response.data
                     endTimeFromDatabase.value = workStatus.value.end_time_of_work
-            })
+                    // czas pracy - przypisz czas do końca
+                    //localStorage.setItem('user_end_time_of_work', workStatus.value.end_time_of_work)
+                })
         }
 
         // funkcja zakończenia pracy bez wynagrodznia - manulana
         function manualEndWork(){
             axios.post('work/manual_end');
+            // czas do końca = 0
+            //localStorage.setItem('user_end_time_of_work', null)
             statusOfWork()
         }
 
@@ -191,7 +203,8 @@ export default {
             endTimeWorkFun,
             updateDataUser,
             testFun,
-            onSubmit
+            onSubmit,
+            //toLocalStorage
         }
 
     },

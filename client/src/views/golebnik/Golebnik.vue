@@ -4,10 +4,11 @@
         <!-- LEWA -->
         <div class="col-2" >
         <div>
+            <div>{{pigeonHawk.name}}</div>
             <div>
                 <b>Poziom czystości:</b>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100">1 %
+                    <div class="progress-bar" role="progressbar" :style="{width: pigeonHawk.level_clean + '%'}" aria-valuemin="0" aria-valuemax="100">{{pigeonHawk.level_clean}} %
                     </div>
                 </div>
             </div>
@@ -15,7 +16,7 @@
                 <b>Poziom karmnika:
                   </b>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar">23 %
+                    <div class="progress-bar" role="progressbar" :style="{width: pigeonHawk.level_food + '%'}" aria-valuemin="0" aria-valuemax="100">{{pigeonHawk.level_food}} %
                     </div>
                 </div>
             </div>
@@ -23,7 +24,7 @@
                 <b>Poziom poideł:
                   </b>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar">23 %
+                    <div class="progress-bar" role="progressbar" :style="{width: pigeonHawk.level_water + '%'}" aria-valuemin="0" aria-valuemax="100">{{pigeonHawk.level_water}} %
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@
                 <b>Poziom grytownika:
                   </b>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar">23 %
+                    <div class="progress-bar" role="progressbar" :style="{width: pigeonHawk.level_grit + '%'}" aria-valuemin="0" aria-valuemax="100">{{pigeonHawk.level_grit}} %
                     </div>
                 </div>
             </div>
@@ -131,16 +132,20 @@
   </div>
 </template>
 
-<script>
-export default {
+<script setup>
+import { usePigeonHawks } from '@/composables/pigeonhawks'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+    const route = useRoute()
 
-    data(){
-        return{
-            pojemnosc_golebnika: 2,
-        }
-    },    
+    const { pigeonHawk, getPigeonHawk } = usePigeonHawks()
 
-}
+    const pojemnosc_golebnika = 2
+    console.log(route.params.id)
+
+    onMounted( getPigeonHawk(route.params.id) )
+
+
 </script>
 
 <style>

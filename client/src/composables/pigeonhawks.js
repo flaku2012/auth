@@ -1,19 +1,41 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-export default function usePigeonHawks(){
-    
+export function usePigeonHawks() {
+
     const pigeonHawks = ref([])
+    const pigeonHawk = ref([])
 
     const getPigeonHawks = async () => {
-        const {data} = axios.get('pigeonhawks/get_user_pigeon_hawks')
-        console.log(data)
-        pigeonHawks.value = data
+        axios.get('pigeonhawks/get_user_pigeon_hawks')
+            .then(response => {
+                pigeonHawks.value = response.data
+                //return response
+            })
+            .catch(error => {
+                console.log('getPigeonHawks error', error)
+                return error
+            })
+    }
+    
+    // 
+    const getPigeonHawk = async (id) => {
+        axios.get('pigeonhawks/get_user_pigeon_hawk/' + id)
+            .then(response => {
+                pigeonHawk.value = response.data
+                console.log(pigeonHawk.value)
+            })
+            .catch(error => {
+                console.log('getPigeonHawk error', error)
+                return error
+            })
     }
 
 
-    return{
+    return {
         pigeonHawks,
-        getPigeonHawks
+        pigeonHawk,
+        getPigeonHawks,
+        getPigeonHawk
     }
 }

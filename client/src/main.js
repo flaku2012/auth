@@ -6,8 +6,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import Notifications from '@kyvg/vue3-notification'
-import VueCountdown from '@chenfengyuan/vue-countdown';
+//import Notifications from '@kyvg/vue3-notification'
+//import VueCountdown from '@chenfengyuan/vue-countdown';
 
 require('@/store/subscriber')
 
@@ -38,6 +38,7 @@ window.Echo = new Echo({
         headers: {
             /** I'm using access tokens to access  **/
           Authorization: "Bearer " + localStorage.getItem('token')
+          
         }
     }
 });
@@ -47,14 +48,12 @@ window.Echo.connector.pusher.connection.bind('connected', () => {
 });
 
 
-
-
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(()=>{
     app
-    .component(VueCountdown.name, VueCountdown)
+    //.component(VueCountdown.name, VueCountdown)
     .use(store)
     .use(router)
-    .use(Notifications)
+    //.use(Notifications)
     .mount('#app')
 })
 

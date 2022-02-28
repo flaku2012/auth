@@ -32,7 +32,8 @@
 
         <div class="btn-group" v-if="authenticated">
           <a class="nav-link disabled">TEST: </a>
-          <a class="nav-link disabled">Praca: {{workStatus.in_work == 1 ? 'Jesteś w pracy' : ''}}</a>
+          <!-- <a class="nav-link disabled">Praca: {{workStatus.in_work == 1 ? 'Jesteś w pracy' : ''}}</a> -->
+          <a class="nav-link disabled">Praca: -doIt-</a>
           <a class="nav-link disabled">Saldo: {{user.money}} zł</a>
         </div>
 
@@ -89,9 +90,9 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import {  mapActions, useStore } from 'vuex'
-import axios from 'axios'
+//import axios from 'axios'
 export default {
     name: "theNavigation",
     setup(){
@@ -99,26 +100,26 @@ export default {
       const store = useStore()
       const user = computed(() => store.getters['auth/user']);
       const authenticated = computed( () => store.getters['auth/authenticated'])
-      const workStatus = ref({})
+      //const workStatus = ref({})
 
       // funkcja sprawdzania statusu pracy (czy w pracy czy nie)
-      function statusOfWork(){
-          axios.get('work/status')
-              .then( (response) => {
-                  workStatus.value = response.data
-          })
-      }
+      // function statusOfWork(){
+      //     axios.get('work/status')
+      //         .then( (response) => {
+      //             workStatus.value = response.data
+      //     })
+      // }
 
 
-      statusOfWork()
+      //statusOfWork()
 
 
       return{
         store, 
         user, 
         authenticated,
-        workStatus,
-        statusOfWork
+        //workStatus,
+        //statusOfWork
       }
 
     },

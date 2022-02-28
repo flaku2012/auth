@@ -5,6 +5,8 @@ export default{
     state: {
         token: null,
         user: null,
+        //test
+        //userWork: null,
     },
 
     getters: {
@@ -23,6 +25,9 @@ export default{
         SET_USER(state, data){
             state.user = data
         },
+        // SET_USER_WORK(state, data){
+        //     state.userWork = data
+        // },
     },
 
     actions: {
@@ -43,9 +48,11 @@ export default{
             try{
                 let response = await axios.get('auth/me')
                 commit('SET_USER', response.data)
+                //commit('SET_USER_WORK', response.data.user_work)
             }catch(e){
                 commit('SET_TOKEN', null)
                 commit('SET_USER', null)
+                //commit('SET_USER_WORK', null)
             }
 
         },
@@ -54,6 +61,7 @@ export default{
             return axios.post('auth/signout').then(() => {
                 commit('SET_TOKEN', null)
                 commit('SET_USER', null)
+                //commit('SET_USER_WORK', null)
             })
         },
 

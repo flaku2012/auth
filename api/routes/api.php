@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\MeController;
 use App\Http\Controllers\Work\WorkController;
 use App\Http\Controllers\Profile\MessagesController;
 use App\Http\Controllers\PigeonHawks\PigeonHawksController;
+use App\Http\Controllers\Pigeon\PigeonController;
 
 use App\Mail\WelcomeMail;
 use App\Mail\ResetPasswordMail;
@@ -55,7 +56,13 @@ Route::group(['prefix' => 'work'], function(){
 
 // gołębniki - PigeonHawks
 Route::group(['prefix' => 'pigeonhawks'], function(){
-    Route::get('get_user_pigeon_hawks' , [PigeonHawksController::class, 'get_user_pigeon_hawks']);
+    Route::get('get_user_pigeon_hawks' , [PigeonHawksController::class, 'getUserPigeonHawks']);
+    Route::get('get_user_pigeon_hawk/{pigeonhawk}' , [PigeonHawksController::class, 'getUserPigeonHawk']);
+});
+
+// Gołębie
+Route::group(['prefix' => 'pigeon'], function(){
+    Route::get('get_user_pigeons' , [PigeonController::class, 'getUserPigeons']);
 });
 
 
@@ -65,3 +72,13 @@ Route::get('messages' , [MessagesController::class, 'fetchMessages']);
 Route::post('messages' , [MessagesController::class, 'sendMessage']);
 
 Route::get('weryf' , [MessagesController::class, 'weryfikacja']);
+
+
+// //test JOB
+// Route::get('sendjob', function(){
+//     $data = 'testSendJobDone';
+//     dispatch( new App\Jobs\SendEmailJob($data) );
+// });
+
+// //do testów
+// Route::get('test' , [WorkController::class, 'doTestow']);

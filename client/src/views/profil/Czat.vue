@@ -74,10 +74,12 @@ export default {
 
             fetchMessages()
 
+            //console.log('mounted chat.vue echo headers', window.Echo.options.auth.headers)
+            console.log(window.Echo.channel('chatcourse'))
             window.Echo.private('chatcourse')
-                .listen('MessageSent', (event) => {
+                .listen('.App\\Events\\MessageSent', (event) => {
                     messages.value.push(event.message)
-                    console.log("Event: "+event.message);
+                    console.log("Event: ",event.message);
             })
      
         });
