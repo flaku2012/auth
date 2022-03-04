@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
 import auth from './auth'
-import pigeonHawk from './pigeonhawk'
 
 export default createStore({
   state: {  
@@ -17,7 +16,6 @@ export default createStore({
     //
   },
   modules: {
-    auth,
-    pigeonHawk
+    auth
   }
 })

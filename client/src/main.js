@@ -10,10 +10,9 @@ import axios from 'axios'
 //import VueCountdown from '@chenfengyuan/vue-countdown';
 
 require('@/store/subscriber')
-
-const emitter = mitt();
 const app = createApp(App);
 
+const emitter = mitt();
 app.config.globalProperties.emitter = emitter
 
 const baseURL = axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://www.gra-golebie.pl/api/public/api/' : 'http://127.0.0.1:8000'
@@ -48,6 +47,19 @@ window.Echo.connector.pusher.connection.bind('connected', () => {
 });
 
 
+axios.interceptors.response.use(
+    response => response,
+    error => {
+        if (error.response.status===404 || error.response.status===403) 
+        {
+            // przekierowanie 
+            router.push({name: 'Dashboard'})
+        }
+        return Promise.reject(error);
+    }
+);
+
+    
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(()=>{
     app
     //.component(VueCountdown.name, VueCountdown)

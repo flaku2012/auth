@@ -9,13 +9,13 @@
                 <p class="text-center"><img :src="this.$store.state.main_img_url+'systemowe/wyszwanc1.jpg'" class="img-thumbnail" alt="#"></p>
             </div>
             <div class="col-6">
-                <b>Potencjał:</b> 256 <br>
-                <b>Wiek:</b> 1 (roczniak) <br>
-                <b>Doświadczenie:</b> 20 <br>
-                <b>Przebyty dystans:</b> 20 <br>
-                <b>Ukończone loty:</b> 20 <br>
-                <b>Zdobyte konkursy:</b> 20 <br>
-                <b>Ilość lęgów:</b> 20 <br>
+                <b>Potencjał:</b> --- <br>
+                <b>Wiek:</b> 1 --- <br>
+                <b>Doświadczenie:</b> --- <br>
+                <b>Przebyty dystans:</b> -- <br>
+                <b>Ukończone loty:</b> -- <br>
+                <b>Zdobyte konkursy:</b> -- <br>
+                <b>Ilość lęgów:</b> -- <br>
                 <b>Głód:</b>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width:100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%
@@ -34,13 +34,22 @@
             </div>
         </div>
     </div>
+    || {{pigeon}} ||
   </div>
 </template>
 
-<script>
-export default {
 
-}
+<script setup>
+
+import { useRoute } from 'vue-router'
+import { usePigeons } from '@/composables/pigeon'
+import { onMounted } from '@vue/runtime-core'
+
+    const route = useRoute()
+    const { pigeon, getPigeon } = usePigeons()
+
+    onMounted( getPigeon(route.params.id) )
+
 </script>
 
 <style>

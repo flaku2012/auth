@@ -62,7 +62,8 @@ Route::group(['prefix' => 'pigeonhawks'], function(){
 
 // Gołębie
 Route::group(['prefix' => 'pigeon'], function(){
-    Route::get('get_user_pigeons' , [PigeonController::class, 'getUserPigeons']);
+    Route::get('get_user_pigeons/{pigeon_hawk_id}' , [PigeonController::class, 'getUserPigeons']);
+    Route::get('get_user_pigeon/{pigeon_id}' , [PigeonController::class, 'getUserPigeon']);
 });
 
 

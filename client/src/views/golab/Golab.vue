@@ -41,6 +41,17 @@
             <!-- ŚRODEK -->
             <div class="col-9">
                 <router-view></router-view>
+
+                <!-- TU WYSWIETLAM WSZYSTKIE WIDOKI DOTYCZĄCE DANEGO GOŁĘBIA -->
+                <!-- NP LOTY, ZDROWIE, RODZICE, ITP, ITD (patrz na otwarte karty w VSC) -->
+
+                <!-- W KAŻDYM WIDOKU MUSIAŁBYM POBIERAĆ DANE DOTYCZĄCE DANEGO GOŁĘBIA PO ID (mam zrobione composables) -->
+                <!-- JEST TO WYDAJNE ??  -->
+                <!-- CZY JEDEN GŁÓWNY WIDOK A W NIM COMPONENTY ? -->
+                
+                <!-- OGÓLNIE MAM WRAŻENIE, ŻE DZIAŁA TO Z PEWNYM OPÓŻNIENIEM NP. DANE WSZYSTKICH GOŁĘBI W DANYM GOŁĘNIKU -->
+                <!-- CZYLI MOŻE BYĆ ICH NP. 3 TO WIDZĘ GOŁYM OKIEM, ŻE JEST TO JAKA 0,5-1 SEK ŁADOWANIA DANYCH -->
+
             </div>
         </div>
     </div>

@@ -23,7 +23,6 @@ export function usePigeonHawks() {
         axios.get('pigeonhawks/get_user_pigeon_hawk/' + id)
             .then(response => {
                 pigeonHawk.value = response.data
-                console.log(pigeonHawk.value)
             })
             .catch(error => {
                 console.log('getPigeonHawk error', error)
